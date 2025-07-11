@@ -34,3 +34,6 @@ cosim/
 /.cache/
 **/obj_dir/
 *.exe
+
+hls_examples/** 
+iccad_2025_benchmark_results/** 
