@@ -1,14 +1,33 @@
 {
-  "configurations": [
-    {
-      "name": "Linux",
-      "includePath": [],
-      "intelliSenseMode": "linux-clang-x64",
-      "compilerPath": "/usr/bin/clang",
-      "cStandard": "c17",
-      "cppStandard": "c++17",
-      "configurationProvider": "llvm-vs-code-extensions.vscode-clangd"
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/include",
+                "${workspaceFolder}/ext/yosys",
+                "${workspaceFolder}/ext/yosys/kernel",
+                "${workspaceFolder}/ext/yosys/frontends",
+                "${workspaceFolder}/ext/yosys/backends",
+                "${workspaceFolder}/ext/verilator/include",
+                "${workspaceFolder}/ext/abc/src",
+                "${workspaceFolder}/*",
+                "${workspaceFolder}/tools/promise",
+                "/home/x/xiaofeng-zhou/eigen-3.4.0"
+            ],
+            "defines": [
+                "PROMISE_BINARIES_DIR=\"${workspaceFolder}/build/bin\"",
+                "_YOSYS_",
+                "YOSYS_ENABLE_GLOB",
+                "YOSYS_ENABLE_ZLIB",
+                "YOSYS_ENABLE_ABC",
+                "YOSYS_ENABLE_COVER"
+            ],
+            "intelliSenseMode": "linux-clang-x64",
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c17",
+            "cppStandard": "c++20",
+            "configurationProvider": "llvm-vs-code-extensions.vscode-clangd"
+        }
+    ],
+    "version": 4
 }

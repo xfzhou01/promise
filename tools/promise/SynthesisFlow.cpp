@@ -317,6 +317,8 @@ bool synthesisFlow(SynthesisFlowConfig config, RTLIL::Design *design,
   }
 
   auto signalMatrix = getUniqueRows(simData);
+  std::cerr << "Signal matrix after simulation: " << signalMatrix.rows()
+            << " rows, " << signalMatrix.cols() << " columns." << std::endl;
 
   // [STEP]: Suggest invariants from the signalMatrix:
   std::vector<LinearInvariant> linearInvariants =
@@ -385,7 +387,16 @@ bool synthesisFlow(SynthesisFlowConfig config, RTLIL::Design *design,
 
     // Retrieve the signal matrix from CEX
     auto cexMatrix = vcdToSignalMatrix(m, vcdFile, singleBitRegOuts);
+    std::cerr << "CEX matrix content:" << std::endl;
+    for (int i = 0; i < cexMatrix.rows(); ++i) {
+      for (int j = 0; j < cexMatrix.cols(); ++j) {
+        std::cerr << cexMatrix(i, j) << " ";
+      }
+      std::cerr << std::endl;
+    }
     signalMatrix = getUniqueRows({signalMatrix, cexMatrix});
+    std::cerr << "Signal matrix after CEX: " << signalMatrix.rows()
+              << " rows, " << signalMatrix.cols() << " columns." << std::endl;
 
     // [STEP]: Suggest invariants from the signalMatrix:
     linearInvariants = inferLinearEqualities(m, signalMatrix, singleBitRegOuts);
