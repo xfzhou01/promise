@@ -4,7 +4,7 @@ exit_on_failure() {
     exit 1
   fi
 }
-
+export PATH=$(echo $PATH | tr ':' '\n' | grep -vi xilinx | paste -sd:)
 set -e
 
 PROMISE_CWD=$(realpath .)
@@ -48,9 +48,13 @@ mkdir -p "$PROMISE_CWD/build"
 cd "$PROMISE_CWD/build"
 
 cmake .. -G Ninja \
+  -DCMAKE_PREFIX_PATH=/home/x/xiaofeng-zhou/eigen-3.4.0/Eigen \
   -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ \
   -DCMAKE_BUILD_TYPE=Debug \
   -DYOSYS_ROOT="$PROMISE_CWD/ext/yosys" \
   -DABC_ROOT="$PROMISE_CWD/ext/abc" \
 
-ninja
+  
+#  -DEigen3_ROOT=/home/x/xiaofeng-zhou/eigen-3.4.0/Eigen \
+
+ninja -j8

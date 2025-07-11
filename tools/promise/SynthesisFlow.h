@@ -58,6 +58,12 @@ public:
     return outputDir;
   }
 
+  // get proof iteration
+  unsigned getProofIteration() const { return proofIteration; }
+
+  // get simulation iteration
+  unsigned getSimIteration() const { return simIteration; }
+
   SynthesisFlowConfig(unsigned modelCheckingTimeOut,
                       std::filesystem::path outputDir)
       : modelCheckingTimeOut(modelCheckingTimeOut),

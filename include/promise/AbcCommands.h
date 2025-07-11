@@ -32,6 +32,7 @@ using namespace ABC_NAMESPACE;
 #include "base/abc/abc.h"
 
 inline void runAbcCommand(Abc_Frame_t *pAbc, const std::string &cmd) {
+  // wrap abc command execution with error code and info
   if (!pAbc) {
     throw std::runtime_error(
         "Error: abc not initialized with Abc_FrameGetGlobalFrame");

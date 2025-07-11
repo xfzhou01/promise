@@ -14,6 +14,11 @@ include(cmake/FindYosys.cmake)
 include(cmake/FindABC.cmake)
 
 find_package(Eigen3 3.3 REQUIRED NO_MODULE)
+
+message(STATUS "Found Eigen3 version: ${Eigen3_VERSION}")
+
+set(EIGEN3_INCLUDE_DIR "/home/x/xiaofeng-zhou/eigen-3.4.0")
+message(STATUS "Eigen3 include dir: ${EIGEN3_INCLUDE_DIR}")
 find_package(Boost 1.82 REQUIRED COMPONENTS filesystem system graph json)
 
 # See abc/misc/util/abc_global.h: "long long" behaves differently on
@@ -35,7 +40,22 @@ include_directories(${EIGEN3_INCLUDE_DIR})
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${ABC_ROOT}/src)
 
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(FFI REQUIRED libffi)
+
+message(STATUS "YOSYS_ROOT: ${YOSYS_ROOT}")
+message(STATUS "ABC_ROOT: ${ABC_ROOT}")
+message(STATUS "EIGEN3_INCLUDE_DIR: ${EIGEN3_INCLUDE_DIR}")
+message(STATUS "Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
+message(STATUS "CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
+
 add_library(Promise)
+
+target_link_libraries(Promise
+    PRIVATE
+    /home/x/xiaofeng-zhou/promise/ext/abc/libabc.so
+    ffi
+)
 
 target_compile_options(Promise
     PRIVATE 
@@ -58,6 +78,8 @@ function(add_promise_binary binary_name)
         Promise
         ${YOSYS_LIB}
         ${ABC_LIB}
+        /home/x/xiaofeng-zhou/promise/ext/abc/libabc.so
+        ffi
         Eigen3::Eigen
         Boost::json
     )
@@ -96,3 +118,5 @@ add_subdirectory(${CMAKE_SOURCE_DIR}/lib)
 add_subdirectory(${CMAKE_SOURCE_DIR}/experiments)
 add_subdirectory(${CMAKE_SOURCE_DIR}/tools)
 add_subdirectory(${CMAKE_SOURCE_DIR}/test)
+
+

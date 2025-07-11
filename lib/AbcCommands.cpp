@@ -67,7 +67,7 @@ void runAbcCombOptimization(const std::string &filename,
                             const std::string &outputFileName) {
   Abc_Start();
   Abc_Frame_t *pAbc;
-
+  // get abc pointer
   pAbc = Abc_FrameGetGlobalFrame();
 
   runAbcCommand(pAbc, "read_blif " + filename + "");

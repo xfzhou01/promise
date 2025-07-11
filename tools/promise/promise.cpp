@@ -44,8 +44,10 @@ int main(int argc, char *argv[]) {
   std::string inFileNames = argv[2];
 
   std::vector<std::string> verilogFiles(argv + 2, argv + argc);
-
+  // run verilator linting
   runVerilatorLinting(verilogFiles, topName);
+
+  // at here, a cpp simulation model for RTL should be built and compiled
 
   for (auto &f : verilogFiles) {
     if (!fs::exists(f)) {
@@ -66,13 +68,15 @@ int main(int argc, char *argv[]) {
 #endif
 
   // Run Yosys passes on the design
+  // design is a RTLIL object
   run_pass("read_verilog " + join(verilogFiles, " "), design);
   run_pass("synth -nofsm -flatten -top " + topName +
                "; dffunmap; check -assert",
            design);
 
   // RTLIL::Module *module = design->module(RTLIL::escape_id(topName));
-
+  // model checking timeout is 3600 seconds
+  // output directory is "output"
   SynthesisFlowConfig config(3600, "output");
 
   synthesisFlow(config, design, topName);
