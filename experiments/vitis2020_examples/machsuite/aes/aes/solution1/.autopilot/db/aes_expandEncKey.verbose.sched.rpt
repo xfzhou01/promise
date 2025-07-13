@@ -1,0 +1,788 @@
+
+
+================================================================
+== Vitis HLS Report for 'aes_expandEncKey'
+================================================================
+* Date:           Sat Jul 12 15:32:16 2025
+
+* Version:        2020.2 (Build 3064766 on Wed Nov 18 09:12:47 MST 2020)
+* Project:        aes
+* Solution:       solution1 (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+---------+----------+------------+
+    |  Clock |  Target | Estimated| Uncertainty|
+    +--------+---------+----------+------------+
+    |ap_clk  |  2.00 ns|  1.923 ns|     0.54 ns|
+    +--------+---------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+-----------+-----------+-----+-----+---------+
+    |  Latency (cycles) |   Latency (absolute)  |  Interval | Pipeline|
+    |   min   |   max   |    min    |    max    | min | max |   Type  |
+    +---------+---------+-----------+-----------+-----+-----+---------+
+    |       34|       34|  68.000 ns|  68.000 ns|   32|   32|      yes|
+    +---------+---------+-----------+-----------+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 2
+HasVarLatency: 0
+IsPipeline: 1
+IsRtlPipelined: 1
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 32, depth = 35
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states : 35
+* Pipeline : 1
+  Pipeline-0 : II = 32, D = 35, States = { 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 2 
+2 --> 3 
+3 --> 4 
+4 --> 5 
+5 --> 6 
+6 --> 7 
+7 --> 8 
+8 --> 9 
+9 --> 10 
+10 --> 11 
+11 --> 12 
+12 --> 13 
+13 --> 14 
+14 --> 15 
+15 --> 16 
+16 --> 17 
+17 --> 18 
+18 --> 19 
+19 --> 20 
+20 --> 21 
+21 --> 22 
+22 --> 23 
+23 --> 24 
+24 --> 25 
+25 --> 26 
+26 --> 27 
+27 --> 28 
+28 --> 29 
+29 --> 30 
+30 --> 31 
+31 --> 32 
+32 --> 33 
+33 --> 34 
+34 --> 35 
+35 --> 
+
+* FSM state operations: 
+
+State 1 <SV = 0> <Delay = 1.92>
+ST_1 : Operation 36 [1/1] (0.00ns)   --->   "%k_read = read i7 @_ssdm_op_Read.ap_auto.i7, i7 %k"   --->   Operation 36 'read' 'k_read' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 37 [1/1] (0.00ns)   --->   "%k_cast = zext i7 %k_read"   --->   Operation 37 'zext' 'k_cast' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 38 [2/2] (1.92ns)   --->   "%add_ln304 = add i7 %k_read, i7 29" [aes.cpp:304]   --->   Operation 38 'add' 'add_ln304' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_1 : Operation 39 [1/1] (0.00ns)   --->   "%ctx_addr_9 = getelementptr i8 %ctx, i64 0, i64 %k_cast" [aes.cpp:304]   --->   Operation 39 'getelementptr' 'ctx_addr_9' <Predicate = true> <Delay = 0.00>
+ST_1 : Operation 40 [4/4] (1.86ns)   --->   "%ctx_load_5 = load i7 %ctx_addr_9" [aes.cpp:304]   --->   Operation 40 'load' 'ctx_load_5' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_1 : Operation 41 [2/2] (1.92ns)   --->   "%add_ln305 = add i7 %k_read, i7 30" [aes.cpp:305]   --->   Operation 41 'add' 'add_ln305' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 2 <SV = 1> <Delay = 1.92>
+ST_2 : Operation 42 [1/2] (1.92ns)   --->   "%add_ln304 = add i7 %k_read, i7 29" [aes.cpp:304]   --->   Operation 42 'add' 'add_ln304' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 43 [3/4] (1.86ns)   --->   "%ctx_load_5 = load i7 %ctx_addr_9" [aes.cpp:304]   --->   Operation 43 'load' 'ctx_load_5' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_2 : Operation 44 [1/2] (1.92ns)   --->   "%add_ln305 = add i7 %k_read, i7 30" [aes.cpp:305]   --->   Operation 44 'add' 'add_ln305' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 45 [2/2] (1.92ns)   --->   "%add_ln306 = add i7 %k_read, i7 31" [aes.cpp:306]   --->   Operation 45 'add' 'add_ln306' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_2 : Operation 46 [2/2] (1.92ns)   --->   "%add_ln307 = add i7 %k_read, i7 28" [aes.cpp:307]   --->   Operation 46 'add' 'add_ln307' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 3 <SV = 2> <Delay = 1.92>
+ST_3 : Operation 47 [1/1] (0.00ns)   --->   "%zext_ln304_1 = zext i7 %add_ln304" [aes.cpp:304]   --->   Operation 47 'zext' 'zext_ln304_1' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 48 [1/1] (0.00ns)   --->   "%ctx_addr = getelementptr i8 %ctx, i64 0, i64 %zext_ln304_1" [aes.cpp:304]   --->   Operation 48 'getelementptr' 'ctx_addr' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 49 [4/4] (1.86ns)   --->   "%ctx_load = load i7 %ctx_addr" [aes.cpp:304]   --->   Operation 49 'load' 'ctx_load' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_3 : Operation 50 [2/4] (1.86ns)   --->   "%ctx_load_5 = load i7 %ctx_addr_9" [aes.cpp:304]   --->   Operation 50 'load' 'ctx_load_5' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_3 : Operation 51 [1/1] (0.00ns)   --->   "%zext_ln305_1 = zext i7 %add_ln305" [aes.cpp:305]   --->   Operation 51 'zext' 'zext_ln305_1' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 52 [1/1] (0.00ns)   --->   "%ctx_addr_10 = getelementptr i8 %ctx, i64 0, i64 %zext_ln305_1" [aes.cpp:305]   --->   Operation 52 'getelementptr' 'ctx_addr_10' <Predicate = true> <Delay = 0.00>
+ST_3 : Operation 53 [4/4] (1.86ns)   --->   "%ctx_load_6 = load i7 %ctx_addr_10" [aes.cpp:305]   --->   Operation 53 'load' 'ctx_load_6' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_3 : Operation 54 [2/2] (1.92ns)   --->   "%add_ln305_1 = add i7 %k_read, i7 1" [aes.cpp:305]   --->   Operation 54 'add' 'add_ln305_1' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 55 [1/2] (1.92ns)   --->   "%add_ln306 = add i7 %k_read, i7 31" [aes.cpp:306]   --->   Operation 55 'add' 'add_ln306' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 56 [2/2] (1.92ns)   --->   "%add_ln306_1 = add i7 %k_read, i7 2" [aes.cpp:306]   --->   Operation 56 'add' 'add_ln306_1' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_3 : Operation 57 [1/2] (1.92ns)   --->   "%add_ln307 = add i7 %k_read, i7 28" [aes.cpp:307]   --->   Operation 57 'add' 'add_ln307' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 4 <SV = 3> <Delay = 1.92>
+ST_4 : Operation 58 [3/4] (1.86ns)   --->   "%ctx_load = load i7 %ctx_addr" [aes.cpp:304]   --->   Operation 58 'load' 'ctx_load' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_4 : Operation 59 [1/4] (1.86ns)   --->   "%ctx_load_5 = load i7 %ctx_addr_9" [aes.cpp:304]   --->   Operation 59 'load' 'ctx_load_5' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_4 : Operation 60 [3/4] (1.86ns)   --->   "%ctx_load_6 = load i7 %ctx_addr_10" [aes.cpp:305]   --->   Operation 60 'load' 'ctx_load_6' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_4 : Operation 61 [1/2] (1.92ns)   --->   "%add_ln305_1 = add i7 %k_read, i7 1" [aes.cpp:305]   --->   Operation 61 'add' 'add_ln305_1' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 62 [1/1] (0.00ns)   --->   "%zext_ln306_1 = zext i7 %add_ln306" [aes.cpp:306]   --->   Operation 62 'zext' 'zext_ln306_1' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 63 [1/1] (0.00ns)   --->   "%ctx_addr_12 = getelementptr i8 %ctx, i64 0, i64 %zext_ln306_1" [aes.cpp:306]   --->   Operation 63 'getelementptr' 'ctx_addr_12' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 64 [4/4] (1.86ns)   --->   "%ctx_load_8 = load i7 %ctx_addr_12" [aes.cpp:306]   --->   Operation 64 'load' 'ctx_load_8' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_4 : Operation 65 [1/2] (1.92ns)   --->   "%add_ln306_1 = add i7 %k_read, i7 2" [aes.cpp:306]   --->   Operation 65 'add' 'add_ln306_1' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 66 [1/1] (0.00ns)   --->   "%zext_ln307_1 = zext i7 %add_ln307" [aes.cpp:307]   --->   Operation 66 'zext' 'zext_ln307_1' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 67 [1/1] (0.00ns)   --->   "%ctx_addr_14 = getelementptr i8 %ctx, i64 0, i64 %zext_ln307_1" [aes.cpp:307]   --->   Operation 67 'getelementptr' 'ctx_addr_14' <Predicate = true> <Delay = 0.00>
+ST_4 : Operation 68 [4/4] (1.86ns)   --->   "%ctx_load_10 = load i7 %ctx_addr_14" [aes.cpp:307]   --->   Operation 68 'load' 'ctx_load_10' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_4 : Operation 69 [2/2] (1.92ns)   --->   "%add_ln307_1 = add i7 %k_read, i7 3" [aes.cpp:307]   --->   Operation 69 'add' 'add_ln307_1' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_4 : Operation 70 [2/2] (1.92ns)   --->   "%add_ln310 = add i7 %k_read, i7 4" [aes.cpp:310]   --->   Operation 70 'add' 'add_ln310' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 5 <SV = 4> <Delay = 1.92>
+ST_5 : Operation 71 [2/4] (1.86ns)   --->   "%ctx_load = load i7 %ctx_addr" [aes.cpp:304]   --->   Operation 71 'load' 'ctx_load' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_5 : Operation 72 [2/4] (1.86ns)   --->   "%ctx_load_6 = load i7 %ctx_addr_10" [aes.cpp:305]   --->   Operation 72 'load' 'ctx_load_6' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_5 : Operation 73 [1/1] (0.00ns)   --->   "%zext_ln305_2 = zext i7 %add_ln305_1" [aes.cpp:305]   --->   Operation 73 'zext' 'zext_ln305_2' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 74 [1/1] (0.00ns)   --->   "%ctx_addr_11 = getelementptr i8 %ctx, i64 0, i64 %zext_ln305_2" [aes.cpp:305]   --->   Operation 74 'getelementptr' 'ctx_addr_11' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 75 [4/4] (1.86ns)   --->   "%ctx_load_7 = load i7 %ctx_addr_11" [aes.cpp:305]   --->   Operation 75 'load' 'ctx_load_7' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_5 : Operation 76 [3/4] (1.86ns)   --->   "%ctx_load_8 = load i7 %ctx_addr_12" [aes.cpp:306]   --->   Operation 76 'load' 'ctx_load_8' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_5 : Operation 77 [1/1] (0.00ns)   --->   "%zext_ln306_2 = zext i7 %add_ln306_1" [aes.cpp:306]   --->   Operation 77 'zext' 'zext_ln306_2' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 78 [1/1] (0.00ns)   --->   "%ctx_addr_13 = getelementptr i8 %ctx, i64 0, i64 %zext_ln306_2" [aes.cpp:306]   --->   Operation 78 'getelementptr' 'ctx_addr_13' <Predicate = true> <Delay = 0.00>
+ST_5 : Operation 79 [4/4] (1.86ns)   --->   "%ctx_load_9 = load i7 %ctx_addr_13" [aes.cpp:306]   --->   Operation 79 'load' 'ctx_load_9' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_5 : Operation 80 [3/4] (1.86ns)   --->   "%ctx_load_10 = load i7 %ctx_addr_14" [aes.cpp:307]   --->   Operation 80 'load' 'ctx_load_10' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_5 : Operation 81 [1/2] (1.92ns)   --->   "%add_ln307_1 = add i7 %k_read, i7 3" [aes.cpp:307]   --->   Operation 81 'add' 'add_ln307_1' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 82 [1/2] (1.92ns)   --->   "%add_ln310 = add i7 %k_read, i7 4" [aes.cpp:310]   --->   Operation 82 'add' 'add_ln310' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 83 [2/2] (1.92ns)   --->   "%add_ln310_1 = add i7 %k_read, i7 5" [aes.cpp:310]   --->   Operation 83 'add' 'add_ln310_1' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_5 : Operation 84 [2/2] (1.92ns)   --->   "%add_ln311 = add i7 %k_read, i7 6" [aes.cpp:311]   --->   Operation 84 'add' 'add_ln311' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 6 <SV = 5> <Delay = 1.92>
+ST_6 : Operation 85 [1/4] (1.86ns)   --->   "%ctx_load = load i7 %ctx_addr" [aes.cpp:304]   --->   Operation 85 'load' 'ctx_load' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_6 : Operation 86 [1/4] (1.86ns)   --->   "%ctx_load_6 = load i7 %ctx_addr_10" [aes.cpp:305]   --->   Operation 86 'load' 'ctx_load_6' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_6 : Operation 87 [3/4] (1.86ns)   --->   "%ctx_load_7 = load i7 %ctx_addr_11" [aes.cpp:305]   --->   Operation 87 'load' 'ctx_load_7' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_6 : Operation 88 [2/4] (1.86ns)   --->   "%ctx_load_8 = load i7 %ctx_addr_12" [aes.cpp:306]   --->   Operation 88 'load' 'ctx_load_8' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_6 : Operation 89 [3/4] (1.86ns)   --->   "%ctx_load_9 = load i7 %ctx_addr_13" [aes.cpp:306]   --->   Operation 89 'load' 'ctx_load_9' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_6 : Operation 90 [2/4] (1.86ns)   --->   "%ctx_load_10 = load i7 %ctx_addr_14" [aes.cpp:307]   --->   Operation 90 'load' 'ctx_load_10' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_6 : Operation 91 [1/1] (0.00ns)   --->   "%zext_ln307_2 = zext i7 %add_ln307_1" [aes.cpp:307]   --->   Operation 91 'zext' 'zext_ln307_2' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 92 [1/1] (0.00ns)   --->   "%ctx_addr_15 = getelementptr i8 %ctx, i64 0, i64 %zext_ln307_2" [aes.cpp:307]   --->   Operation 92 'getelementptr' 'ctx_addr_15' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 93 [4/4] (1.86ns)   --->   "%ctx_load_11 = load i7 %ctx_addr_15" [aes.cpp:307]   --->   Operation 93 'load' 'ctx_load_11' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_6 : Operation 94 [1/1] (0.00ns)   --->   "%zext_ln310 = zext i7 %add_ln310" [aes.cpp:310]   --->   Operation 94 'zext' 'zext_ln310' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 95 [1/1] (0.00ns)   --->   "%ctx_addr_39 = getelementptr i8 %ctx, i64 0, i64 %zext_ln310" [aes.cpp:310]   --->   Operation 95 'getelementptr' 'ctx_addr_39' <Predicate = true> <Delay = 0.00>
+ST_6 : Operation 96 [4/4] (1.86ns)   --->   "%ctx_load_35 = load i7 %ctx_addr_39" [aes.cpp:310]   --->   Operation 96 'load' 'ctx_load_35' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_6 : Operation 97 [1/2] (1.92ns)   --->   "%add_ln310_1 = add i7 %k_read, i7 5" [aes.cpp:310]   --->   Operation 97 'add' 'add_ln310_1' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 98 [1/2] (1.92ns)   --->   "%add_ln311 = add i7 %k_read, i7 6" [aes.cpp:311]   --->   Operation 98 'add' 'add_ln311' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 99 [2/2] (1.92ns)   --->   "%add_ln311_1 = add i7 %k_read, i7 7" [aes.cpp:311]   --->   Operation 99 'add' 'add_ln311_1' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_6 : Operation 100 [2/2] (1.92ns)   --->   "%add_ln310_2 = add i7 %k_read, i7 8" [aes.cpp:310]   --->   Operation 100 'add' 'add_ln310_2' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 7 <SV = 6> <Delay = 1.92>
+ST_7 : Operation 101 [1/1] (0.00ns)   --->   "%zext_ln304 = zext i8 %ctx_load" [aes.cpp:304]   --->   Operation 101 'zext' 'zext_ln304' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 102 [1/1] (0.00ns)   --->   "%sbox_addr = getelementptr i8 %sbox, i64 0, i64 %zext_ln304" [aes.cpp:304]   --->   Operation 102 'getelementptr' 'sbox_addr' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 103 [4/4] (1.68ns)   --->   "%sbox_load = load i8 %sbox_addr" [aes.cpp:304]   --->   Operation 103 'load' 'sbox_load' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_7 : Operation 104 [2/4] (1.86ns)   --->   "%ctx_load_7 = load i7 %ctx_addr_11" [aes.cpp:305]   --->   Operation 104 'load' 'ctx_load_7' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_7 : Operation 105 [1/4] (1.86ns)   --->   "%ctx_load_8 = load i7 %ctx_addr_12" [aes.cpp:306]   --->   Operation 105 'load' 'ctx_load_8' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_7 : Operation 106 [2/4] (1.86ns)   --->   "%ctx_load_9 = load i7 %ctx_addr_13" [aes.cpp:306]   --->   Operation 106 'load' 'ctx_load_9' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_7 : Operation 107 [1/4] (1.86ns)   --->   "%ctx_load_10 = load i7 %ctx_addr_14" [aes.cpp:307]   --->   Operation 107 'load' 'ctx_load_10' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_7 : Operation 108 [3/4] (1.86ns)   --->   "%ctx_load_11 = load i7 %ctx_addr_15" [aes.cpp:307]   --->   Operation 108 'load' 'ctx_load_11' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_7 : Operation 109 [3/4] (1.86ns)   --->   "%ctx_load_35 = load i7 %ctx_addr_39" [aes.cpp:310]   --->   Operation 109 'load' 'ctx_load_35' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_7 : Operation 110 [1/1] (0.00ns)   --->   "%zext_ln310_1 = zext i7 %add_ln310_1" [aes.cpp:310]   --->   Operation 110 'zext' 'zext_ln310_1' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 111 [1/1] (0.00ns)   --->   "%ctx_addr_40 = getelementptr i8 %ctx, i64 0, i64 %zext_ln310_1" [aes.cpp:310]   --->   Operation 111 'getelementptr' 'ctx_addr_40' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 112 [4/4] (1.86ns)   --->   "%ctx_load_36 = load i7 %ctx_addr_40" [aes.cpp:310]   --->   Operation 112 'load' 'ctx_load_36' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_7 : Operation 113 [1/1] (0.00ns)   --->   "%zext_ln311 = zext i7 %add_ln311" [aes.cpp:311]   --->   Operation 113 'zext' 'zext_ln311' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 114 [1/1] (0.00ns)   --->   "%ctx_addr_41 = getelementptr i8 %ctx, i64 0, i64 %zext_ln311" [aes.cpp:311]   --->   Operation 114 'getelementptr' 'ctx_addr_41' <Predicate = true> <Delay = 0.00>
+ST_7 : Operation 115 [4/4] (1.86ns)   --->   "%ctx_load_37 = load i7 %ctx_addr_41" [aes.cpp:311]   --->   Operation 115 'load' 'ctx_load_37' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_7 : Operation 116 [1/2] (1.92ns)   --->   "%add_ln311_1 = add i7 %k_read, i7 7" [aes.cpp:311]   --->   Operation 116 'add' 'add_ln311_1' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 117 [1/2] (1.92ns)   --->   "%add_ln310_2 = add i7 %k_read, i7 8" [aes.cpp:310]   --->   Operation 117 'add' 'add_ln310_2' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 118 [2/2] (1.92ns)   --->   "%add_ln310_3 = add i7 %k_read, i7 9" [aes.cpp:310]   --->   Operation 118 'add' 'add_ln310_3' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_7 : Operation 119 [2/2] (1.92ns)   --->   "%add_ln311_2 = add i7 %k_read, i7 10" [aes.cpp:311]   --->   Operation 119 'add' 'add_ln311_2' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 8 <SV = 7> <Delay = 1.92>
+ST_8 : Operation 120 [3/4] (1.68ns)   --->   "%sbox_load = load i8 %sbox_addr" [aes.cpp:304]   --->   Operation 120 'load' 'sbox_load' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_8 : Operation 121 [1/1] (0.00ns)   --->   "%zext_ln305 = zext i8 %ctx_load_6" [aes.cpp:305]   --->   Operation 121 'zext' 'zext_ln305' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 122 [1/1] (0.00ns)   --->   "%sbox_addr_2 = getelementptr i8 %sbox, i64 0, i64 %zext_ln305" [aes.cpp:305]   --->   Operation 122 'getelementptr' 'sbox_addr_2' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 123 [4/4] (1.68ns)   --->   "%sbox_load_2 = load i8 %sbox_addr_2" [aes.cpp:305]   --->   Operation 123 'load' 'sbox_load_2' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_8 : Operation 124 [1/4] (1.86ns)   --->   "%ctx_load_7 = load i7 %ctx_addr_11" [aes.cpp:305]   --->   Operation 124 'load' 'ctx_load_7' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_8 : Operation 125 [1/4] (1.86ns)   --->   "%ctx_load_9 = load i7 %ctx_addr_13" [aes.cpp:306]   --->   Operation 125 'load' 'ctx_load_9' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_8 : Operation 126 [2/4] (1.86ns)   --->   "%ctx_load_11 = load i7 %ctx_addr_15" [aes.cpp:307]   --->   Operation 126 'load' 'ctx_load_11' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_8 : Operation 127 [2/4] (1.86ns)   --->   "%ctx_load_35 = load i7 %ctx_addr_39" [aes.cpp:310]   --->   Operation 127 'load' 'ctx_load_35' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_8 : Operation 128 [3/4] (1.86ns)   --->   "%ctx_load_36 = load i7 %ctx_addr_40" [aes.cpp:310]   --->   Operation 128 'load' 'ctx_load_36' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_8 : Operation 129 [3/4] (1.86ns)   --->   "%ctx_load_37 = load i7 %ctx_addr_41" [aes.cpp:311]   --->   Operation 129 'load' 'ctx_load_37' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_8 : Operation 130 [1/1] (0.00ns)   --->   "%zext_ln311_1 = zext i7 %add_ln311_1" [aes.cpp:311]   --->   Operation 130 'zext' 'zext_ln311_1' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 131 [1/1] (0.00ns)   --->   "%ctx_addr_42 = getelementptr i8 %ctx, i64 0, i64 %zext_ln311_1" [aes.cpp:311]   --->   Operation 131 'getelementptr' 'ctx_addr_42' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 132 [4/4] (1.86ns)   --->   "%ctx_load_38 = load i7 %ctx_addr_42" [aes.cpp:311]   --->   Operation 132 'load' 'ctx_load_38' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_8 : Operation 133 [1/1] (0.00ns)   --->   "%zext_ln310_2 = zext i7 %add_ln310_2" [aes.cpp:310]   --->   Operation 133 'zext' 'zext_ln310_2' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 134 [1/1] (0.00ns)   --->   "%ctx_addr_43 = getelementptr i8 %ctx, i64 0, i64 %zext_ln310_2" [aes.cpp:310]   --->   Operation 134 'getelementptr' 'ctx_addr_43' <Predicate = true> <Delay = 0.00>
+ST_8 : Operation 135 [4/4] (1.86ns)   --->   "%ctx_load_39 = load i7 %ctx_addr_43" [aes.cpp:310]   --->   Operation 135 'load' 'ctx_load_39' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_8 : Operation 136 [1/2] (1.92ns)   --->   "%add_ln310_3 = add i7 %k_read, i7 9" [aes.cpp:310]   --->   Operation 136 'add' 'add_ln310_3' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 137 [1/2] (1.92ns)   --->   "%add_ln311_2 = add i7 %k_read, i7 10" [aes.cpp:311]   --->   Operation 137 'add' 'add_ln311_2' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 138 [2/2] (1.92ns)   --->   "%add_ln311_3 = add i7 %k_read, i7 11" [aes.cpp:311]   --->   Operation 138 'add' 'add_ln311_3' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_8 : Operation 139 [2/2] (1.92ns)   --->   "%add_ln310_4 = add i7 %k_read, i7 12" [aes.cpp:310]   --->   Operation 139 'add' 'add_ln310_4' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 9 <SV = 8> <Delay = 1.92>
+ST_9 : Operation 140 [2/4] (1.68ns)   --->   "%sbox_load = load i8 %sbox_addr" [aes.cpp:304]   --->   Operation 140 'load' 'sbox_load' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_9 : Operation 141 [3/4] (1.68ns)   --->   "%sbox_load_2 = load i8 %sbox_addr_2" [aes.cpp:305]   --->   Operation 141 'load' 'sbox_load_2' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_9 : Operation 142 [1/1] (0.00ns)   --->   "%zext_ln306 = zext i8 %ctx_load_8" [aes.cpp:306]   --->   Operation 142 'zext' 'zext_ln306' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 143 [1/1] (0.00ns)   --->   "%sbox_addr_3 = getelementptr i8 %sbox, i64 0, i64 %zext_ln306" [aes.cpp:306]   --->   Operation 143 'getelementptr' 'sbox_addr_3' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 144 [4/4] (1.68ns)   --->   "%sbox_load_3 = load i8 %sbox_addr_3" [aes.cpp:306]   --->   Operation 144 'load' 'sbox_load_3' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_9 : Operation 145 [1/4] (1.86ns)   --->   "%ctx_load_11 = load i7 %ctx_addr_15" [aes.cpp:307]   --->   Operation 145 'load' 'ctx_load_11' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_9 : Operation 146 [1/4] (1.86ns)   --->   "%ctx_load_35 = load i7 %ctx_addr_39" [aes.cpp:310]   --->   Operation 146 'load' 'ctx_load_35' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_9 : Operation 147 [2/4] (1.86ns)   --->   "%ctx_load_36 = load i7 %ctx_addr_40" [aes.cpp:310]   --->   Operation 147 'load' 'ctx_load_36' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_9 : Operation 148 [2/4] (1.86ns)   --->   "%ctx_load_37 = load i7 %ctx_addr_41" [aes.cpp:311]   --->   Operation 148 'load' 'ctx_load_37' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_9 : Operation 149 [3/4] (1.86ns)   --->   "%ctx_load_38 = load i7 %ctx_addr_42" [aes.cpp:311]   --->   Operation 149 'load' 'ctx_load_38' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_9 : Operation 150 [3/4] (1.86ns)   --->   "%ctx_load_39 = load i7 %ctx_addr_43" [aes.cpp:310]   --->   Operation 150 'load' 'ctx_load_39' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_9 : Operation 151 [1/1] (0.00ns)   --->   "%zext_ln310_3 = zext i7 %add_ln310_3" [aes.cpp:310]   --->   Operation 151 'zext' 'zext_ln310_3' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 152 [1/1] (0.00ns)   --->   "%ctx_addr_44 = getelementptr i8 %ctx, i64 0, i64 %zext_ln310_3" [aes.cpp:310]   --->   Operation 152 'getelementptr' 'ctx_addr_44' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 153 [4/4] (1.86ns)   --->   "%ctx_load_40 = load i7 %ctx_addr_44" [aes.cpp:310]   --->   Operation 153 'load' 'ctx_load_40' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_9 : Operation 154 [1/1] (0.00ns)   --->   "%zext_ln311_2 = zext i7 %add_ln311_2" [aes.cpp:311]   --->   Operation 154 'zext' 'zext_ln311_2' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 155 [1/1] (0.00ns)   --->   "%ctx_addr_45 = getelementptr i8 %ctx, i64 0, i64 %zext_ln311_2" [aes.cpp:311]   --->   Operation 155 'getelementptr' 'ctx_addr_45' <Predicate = true> <Delay = 0.00>
+ST_9 : Operation 156 [4/4] (1.86ns)   --->   "%ctx_load_41 = load i7 %ctx_addr_45" [aes.cpp:311]   --->   Operation 156 'load' 'ctx_load_41' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_9 : Operation 157 [1/2] (1.92ns)   --->   "%add_ln311_3 = add i7 %k_read, i7 11" [aes.cpp:311]   --->   Operation 157 'add' 'add_ln311_3' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 158 [1/2] (1.92ns)   --->   "%add_ln310_4 = add i7 %k_read, i7 12" [aes.cpp:310]   --->   Operation 158 'add' 'add_ln310_4' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 159 [2/2] (1.92ns)   --->   "%add_ln310_5 = add i7 %k_read, i7 13" [aes.cpp:310]   --->   Operation 159 'add' 'add_ln310_5' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_9 : Operation 160 [2/2] (1.92ns)   --->   "%add_ln311_4 = add i7 %k_read, i7 14" [aes.cpp:311]   --->   Operation 160 'add' 'add_ln311_4' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 10 <SV = 9> <Delay = 1.92>
+ST_10 : Operation 161 [1/4] (1.68ns)   --->   "%sbox_load = load i8 %sbox_addr" [aes.cpp:304]   --->   Operation 161 'load' 'sbox_load' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_10 : Operation 162 [2/4] (1.68ns)   --->   "%sbox_load_2 = load i8 %sbox_addr_2" [aes.cpp:305]   --->   Operation 162 'load' 'sbox_load_2' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_10 : Operation 163 [3/4] (1.68ns)   --->   "%sbox_load_3 = load i8 %sbox_addr_3" [aes.cpp:306]   --->   Operation 163 'load' 'sbox_load_3' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_10 : Operation 164 [1/1] (0.00ns)   --->   "%zext_ln307 = zext i8 %ctx_load_10" [aes.cpp:307]   --->   Operation 164 'zext' 'zext_ln307' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 165 [1/1] (0.00ns)   --->   "%sbox_addr_4 = getelementptr i8 %sbox, i64 0, i64 %zext_ln307" [aes.cpp:307]   --->   Operation 165 'getelementptr' 'sbox_addr_4' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 166 [4/4] (1.68ns)   --->   "%sbox_load_4 = load i8 %sbox_addr_4" [aes.cpp:307]   --->   Operation 166 'load' 'sbox_load_4' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_10 : Operation 167 [1/4] (1.86ns)   --->   "%ctx_load_36 = load i7 %ctx_addr_40" [aes.cpp:310]   --->   Operation 167 'load' 'ctx_load_36' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_10 : Operation 168 [1/4] (1.86ns)   --->   "%ctx_load_37 = load i7 %ctx_addr_41" [aes.cpp:311]   --->   Operation 168 'load' 'ctx_load_37' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_10 : Operation 169 [2/4] (1.86ns)   --->   "%ctx_load_38 = load i7 %ctx_addr_42" [aes.cpp:311]   --->   Operation 169 'load' 'ctx_load_38' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_10 : Operation 170 [2/4] (1.86ns)   --->   "%ctx_load_39 = load i7 %ctx_addr_43" [aes.cpp:310]   --->   Operation 170 'load' 'ctx_load_39' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_10 : Operation 171 [3/4] (1.86ns)   --->   "%ctx_load_40 = load i7 %ctx_addr_44" [aes.cpp:310]   --->   Operation 171 'load' 'ctx_load_40' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_10 : Operation 172 [3/4] (1.86ns)   --->   "%ctx_load_41 = load i7 %ctx_addr_45" [aes.cpp:311]   --->   Operation 172 'load' 'ctx_load_41' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_10 : Operation 173 [1/1] (0.00ns)   --->   "%zext_ln311_3 = zext i7 %add_ln311_3" [aes.cpp:311]   --->   Operation 173 'zext' 'zext_ln311_3' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 174 [1/1] (0.00ns)   --->   "%ctx_addr_46 = getelementptr i8 %ctx, i64 0, i64 %zext_ln311_3" [aes.cpp:311]   --->   Operation 174 'getelementptr' 'ctx_addr_46' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 175 [4/4] (1.86ns)   --->   "%ctx_load_42 = load i7 %ctx_addr_46" [aes.cpp:311]   --->   Operation 175 'load' 'ctx_load_42' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_10 : Operation 176 [1/1] (0.00ns)   --->   "%zext_ln310_4 = zext i7 %add_ln310_4" [aes.cpp:310]   --->   Operation 176 'zext' 'zext_ln310_4' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 177 [1/1] (0.00ns)   --->   "%ctx_addr_47 = getelementptr i8 %ctx, i64 0, i64 %zext_ln310_4" [aes.cpp:310]   --->   Operation 177 'getelementptr' 'ctx_addr_47' <Predicate = true> <Delay = 0.00>
+ST_10 : Operation 178 [4/4] (1.86ns)   --->   "%ctx_load_43 = load i7 %ctx_addr_47" [aes.cpp:310]   --->   Operation 178 'load' 'ctx_load_43' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_10 : Operation 179 [1/2] (1.92ns)   --->   "%add_ln310_5 = add i7 %k_read, i7 13" [aes.cpp:310]   --->   Operation 179 'add' 'add_ln310_5' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 180 [1/2] (1.92ns)   --->   "%add_ln311_4 = add i7 %k_read, i7 14" [aes.cpp:311]   --->   Operation 180 'add' 'add_ln311_4' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 181 [2/2] (1.92ns)   --->   "%add_ln311_5 = add i7 %k_read, i7 15" [aes.cpp:311]   --->   Operation 181 'add' 'add_ln311_5' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_10 : Operation 182 [2/2] (1.92ns)   --->   "%add_ln312 = add i7 %k_read, i7 16" [aes.cpp:312]   --->   Operation 182 'add' 'add_ln312' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 11 <SV = 10> <Delay = 1.92>
+ST_11 : Operation 183 [1/1] (0.00ns)   --->   "%rc_read_1 = read i8 @_ssdm_op_Read.ap_auto.i8, i8 %rc_read"   --->   Operation 183 'read' 'rc_read_1' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 184 [1/1] (0.00ns) (grouped into LUT with out node xor_ln304_1)   --->   "%xor_ln304 = xor i8 %ctx_load_5, i8 %rc_read_1" [aes.cpp:304]   --->   Operation 184 'xor' 'xor_ln304' <Predicate = true> <Delay = 0.00> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 185 [1/1] (0.99ns) (out node of the LUT)   --->   "%xor_ln304_1 = xor i8 %xor_ln304, i8 %sbox_load" [aes.cpp:304]   --->   Operation 185 'xor' 'xor_ln304_1' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 186 [1/4] (1.68ns)   --->   "%sbox_load_2 = load i8 %sbox_addr_2" [aes.cpp:305]   --->   Operation 186 'load' 'sbox_load_2' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_11 : Operation 187 [2/4] (1.68ns)   --->   "%sbox_load_3 = load i8 %sbox_addr_3" [aes.cpp:306]   --->   Operation 187 'load' 'sbox_load_3' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_11 : Operation 188 [3/4] (1.68ns)   --->   "%sbox_load_4 = load i8 %sbox_addr_4" [aes.cpp:307]   --->   Operation 188 'load' 'sbox_load_4' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_11 : Operation 189 [1/1] (0.00ns) (grouped into LUT with out node xor_ln308)   --->   "%shl_ln308 = shl i8 %rc_read_1, i8 1" [aes.cpp:308]   --->   Operation 189 'shl' 'shl_ln308' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 190 [1/1] (0.00ns) (grouped into LUT with out node xor_ln308)   --->   "%tmp = bitselect i1 @_ssdm_op_BitSelect.i1.i8.i32, i8 %rc_read_1, i32 7" [aes.cpp:308]   --->   Operation 190 'bitselect' 'tmp' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 191 [1/1] (0.00ns) (grouped into LUT with out node xor_ln308)   --->   "%select_ln308 = select i1 %tmp, i8 27, i8 0" [aes.cpp:308]   --->   Operation 191 'select' 'select_ln308' <Predicate = true> <Delay = 0.00> <CoreInst = "Sel">   --->   Core 73 'Sel' <Latency = 0> <II = 1> <Delay = 1.18> <FuncUnit> <Opcode : 'select'> <InPorts = 3> <OutPorts = 1>
+ST_11 : Operation 192 [1/1] (1.18ns) (out node of the LUT)   --->   "%xor_ln308 = xor i8 %select_ln308, i8 %shl_ln308" [aes.cpp:308]   --->   Operation 192 'xor' 'xor_ln308' <Predicate = true> <Delay = 1.18> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 193 [1/4] (1.86ns)   --->   "%ctx_load_38 = load i7 %ctx_addr_42" [aes.cpp:311]   --->   Operation 193 'load' 'ctx_load_38' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_11 : Operation 194 [1/4] (1.86ns)   --->   "%ctx_load_39 = load i7 %ctx_addr_43" [aes.cpp:310]   --->   Operation 194 'load' 'ctx_load_39' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_11 : Operation 195 [2/4] (1.86ns)   --->   "%ctx_load_40 = load i7 %ctx_addr_44" [aes.cpp:310]   --->   Operation 195 'load' 'ctx_load_40' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_11 : Operation 196 [2/4] (1.86ns)   --->   "%ctx_load_41 = load i7 %ctx_addr_45" [aes.cpp:311]   --->   Operation 196 'load' 'ctx_load_41' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_11 : Operation 197 [3/4] (1.86ns)   --->   "%ctx_load_42 = load i7 %ctx_addr_46" [aes.cpp:311]   --->   Operation 197 'load' 'ctx_load_42' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_11 : Operation 198 [3/4] (1.86ns)   --->   "%ctx_load_43 = load i7 %ctx_addr_47" [aes.cpp:310]   --->   Operation 198 'load' 'ctx_load_43' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_11 : Operation 199 [1/1] (0.00ns)   --->   "%zext_ln310_5 = zext i7 %add_ln310_5" [aes.cpp:310]   --->   Operation 199 'zext' 'zext_ln310_5' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 200 [1/1] (0.00ns)   --->   "%ctx_addr_48 = getelementptr i8 %ctx, i64 0, i64 %zext_ln310_5" [aes.cpp:310]   --->   Operation 200 'getelementptr' 'ctx_addr_48' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 201 [4/4] (1.86ns)   --->   "%ctx_load_44 = load i7 %ctx_addr_48" [aes.cpp:310]   --->   Operation 201 'load' 'ctx_load_44' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_11 : Operation 202 [1/1] (0.00ns)   --->   "%zext_ln311_4 = zext i7 %add_ln311_4" [aes.cpp:311]   --->   Operation 202 'zext' 'zext_ln311_4' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 203 [1/1] (0.00ns)   --->   "%ctx_addr_49 = getelementptr i8 %ctx, i64 0, i64 %zext_ln311_4" [aes.cpp:311]   --->   Operation 203 'getelementptr' 'ctx_addr_49' <Predicate = true> <Delay = 0.00>
+ST_11 : Operation 204 [4/4] (1.86ns)   --->   "%ctx_load_45 = load i7 %ctx_addr_49" [aes.cpp:311]   --->   Operation 204 'load' 'ctx_load_45' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_11 : Operation 205 [1/2] (1.92ns)   --->   "%add_ln311_5 = add i7 %k_read, i7 15" [aes.cpp:311]   --->   Operation 205 'add' 'add_ln311_5' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 206 [1/2] (1.92ns)   --->   "%add_ln312 = add i7 %k_read, i7 16" [aes.cpp:312]   --->   Operation 206 'add' 'add_ln312' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 207 [2/2] (1.92ns)   --->   "%add_ln313 = add i7 %k_read, i7 17" [aes.cpp:313]   --->   Operation 207 'add' 'add_ln313' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_11 : Operation 208 [2/2] (1.92ns)   --->   "%add_ln314 = add i7 %k_read, i7 18" [aes.cpp:314]   --->   Operation 208 'add' 'add_ln314' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 12 <SV = 11> <Delay = 1.92>
+ST_12 : Operation 209 [1/1] (0.99ns)   --->   "%xor_ln305 = xor i8 %ctx_load_7, i8 %sbox_load_2" [aes.cpp:305]   --->   Operation 209 'xor' 'xor_ln305' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 210 [1/4] (1.68ns)   --->   "%sbox_load_3 = load i8 %sbox_addr_3" [aes.cpp:306]   --->   Operation 210 'load' 'sbox_load_3' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_12 : Operation 211 [2/4] (1.68ns)   --->   "%sbox_load_4 = load i8 %sbox_addr_4" [aes.cpp:307]   --->   Operation 211 'load' 'sbox_load_4' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_12 : Operation 212 [1/1] (0.99ns)   --->   "%xor_ln310 = xor i8 %ctx_load_35, i8 %xor_ln304_1" [aes.cpp:310]   --->   Operation 212 'xor' 'xor_ln310' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 213 [1/4] (1.86ns)   --->   "%ctx_load_40 = load i7 %ctx_addr_44" [aes.cpp:310]   --->   Operation 213 'load' 'ctx_load_40' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_12 : Operation 214 [1/4] (1.86ns)   --->   "%ctx_load_41 = load i7 %ctx_addr_45" [aes.cpp:311]   --->   Operation 214 'load' 'ctx_load_41' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_12 : Operation 215 [2/4] (1.86ns)   --->   "%ctx_load_42 = load i7 %ctx_addr_46" [aes.cpp:311]   --->   Operation 215 'load' 'ctx_load_42' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_12 : Operation 216 [2/4] (1.86ns)   --->   "%ctx_load_43 = load i7 %ctx_addr_47" [aes.cpp:310]   --->   Operation 216 'load' 'ctx_load_43' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_12 : Operation 217 [3/4] (1.86ns)   --->   "%ctx_load_44 = load i7 %ctx_addr_48" [aes.cpp:310]   --->   Operation 217 'load' 'ctx_load_44' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_12 : Operation 218 [3/4] (1.86ns)   --->   "%ctx_load_45 = load i7 %ctx_addr_49" [aes.cpp:311]   --->   Operation 218 'load' 'ctx_load_45' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_12 : Operation 219 [1/1] (0.00ns)   --->   "%zext_ln311_5 = zext i7 %add_ln311_5" [aes.cpp:311]   --->   Operation 219 'zext' 'zext_ln311_5' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 220 [1/1] (0.00ns)   --->   "%ctx_addr_50 = getelementptr i8 %ctx, i64 0, i64 %zext_ln311_5" [aes.cpp:311]   --->   Operation 220 'getelementptr' 'ctx_addr_50' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 221 [4/4] (1.86ns)   --->   "%ctx_load_46 = load i7 %ctx_addr_50" [aes.cpp:311]   --->   Operation 221 'load' 'ctx_load_46' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_12 : Operation 222 [1/1] (0.00ns)   --->   "%zext_ln312_1 = zext i7 %add_ln312" [aes.cpp:312]   --->   Operation 222 'zext' 'zext_ln312_1' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 223 [1/1] (0.00ns)   --->   "%ctx_addr_25 = getelementptr i8 %ctx, i64 0, i64 %zext_ln312_1" [aes.cpp:312]   --->   Operation 223 'getelementptr' 'ctx_addr_25' <Predicate = true> <Delay = 0.00>
+ST_12 : Operation 224 [4/4] (1.86ns)   --->   "%ctx_load_21 = load i7 %ctx_addr_25" [aes.cpp:312]   --->   Operation 224 'load' 'ctx_load_21' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_12 : Operation 225 [1/2] (1.92ns)   --->   "%add_ln313 = add i7 %k_read, i7 17" [aes.cpp:313]   --->   Operation 225 'add' 'add_ln313' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 226 [1/2] (1.92ns)   --->   "%add_ln314 = add i7 %k_read, i7 18" [aes.cpp:314]   --->   Operation 226 'add' 'add_ln314' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 227 [2/2] (1.92ns)   --->   "%add_ln315 = add i7 %k_read, i7 19" [aes.cpp:315]   --->   Operation 227 'add' 'add_ln315' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_12 : Operation 228 [2/2] (1.92ns)   --->   "%add_ln317 = add i7 %k_read, i7 20" [aes.cpp:317]   --->   Operation 228 'add' 'add_ln317' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 13 <SV = 12> <Delay = 1.92>
+ST_13 : Operation 229 [1/1] (0.99ns)   --->   "%xor_ln306 = xor i8 %ctx_load_9, i8 %sbox_load_3" [aes.cpp:306]   --->   Operation 229 'xor' 'xor_ln306' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 230 [1/4] (1.68ns)   --->   "%sbox_load_4 = load i8 %sbox_addr_4" [aes.cpp:307]   --->   Operation 230 'load' 'sbox_load_4' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_13 : Operation 231 [1/1] (0.99ns)   --->   "%xor_ln310_1 = xor i8 %ctx_load_36, i8 %xor_ln305" [aes.cpp:310]   --->   Operation 231 'xor' 'xor_ln310_1' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 232 [1/1] (0.99ns)   --->   "%xor_ln310_3 = xor i8 %ctx_load_39, i8 %xor_ln310" [aes.cpp:310]   --->   Operation 232 'xor' 'xor_ln310_3' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 233 [1/4] (1.86ns)   --->   "%ctx_load_42 = load i7 %ctx_addr_46" [aes.cpp:311]   --->   Operation 233 'load' 'ctx_load_42' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_13 : Operation 234 [1/4] (1.86ns)   --->   "%ctx_load_43 = load i7 %ctx_addr_47" [aes.cpp:310]   --->   Operation 234 'load' 'ctx_load_43' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_13 : Operation 235 [2/4] (1.86ns)   --->   "%ctx_load_44 = load i7 %ctx_addr_48" [aes.cpp:310]   --->   Operation 235 'load' 'ctx_load_44' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_13 : Operation 236 [2/4] (1.86ns)   --->   "%ctx_load_45 = load i7 %ctx_addr_49" [aes.cpp:311]   --->   Operation 236 'load' 'ctx_load_45' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_13 : Operation 237 [3/4] (1.86ns)   --->   "%ctx_load_46 = load i7 %ctx_addr_50" [aes.cpp:311]   --->   Operation 237 'load' 'ctx_load_46' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_13 : Operation 238 [3/4] (1.86ns)   --->   "%ctx_load_21 = load i7 %ctx_addr_25" [aes.cpp:312]   --->   Operation 238 'load' 'ctx_load_21' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_13 : Operation 239 [1/1] (0.00ns)   --->   "%zext_ln313_1 = zext i7 %add_ln313" [aes.cpp:313]   --->   Operation 239 'zext' 'zext_ln313_1' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 240 [1/1] (0.00ns)   --->   "%ctx_addr_27 = getelementptr i8 %ctx, i64 0, i64 %zext_ln313_1" [aes.cpp:313]   --->   Operation 240 'getelementptr' 'ctx_addr_27' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 241 [4/4] (1.86ns)   --->   "%ctx_load_23 = load i7 %ctx_addr_27" [aes.cpp:313]   --->   Operation 241 'load' 'ctx_load_23' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_13 : Operation 242 [1/1] (0.00ns)   --->   "%zext_ln314_1 = zext i7 %add_ln314" [aes.cpp:314]   --->   Operation 242 'zext' 'zext_ln314_1' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 243 [1/1] (0.00ns)   --->   "%ctx_addr_29 = getelementptr i8 %ctx, i64 0, i64 %zext_ln314_1" [aes.cpp:314]   --->   Operation 243 'getelementptr' 'ctx_addr_29' <Predicate = true> <Delay = 0.00>
+ST_13 : Operation 244 [4/4] (1.86ns)   --->   "%ctx_load_25 = load i7 %ctx_addr_29" [aes.cpp:314]   --->   Operation 244 'load' 'ctx_load_25' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_13 : Operation 245 [1/2] (1.92ns)   --->   "%add_ln315 = add i7 %k_read, i7 19" [aes.cpp:315]   --->   Operation 245 'add' 'add_ln315' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 246 [1/2] (1.92ns)   --->   "%add_ln317 = add i7 %k_read, i7 20" [aes.cpp:317]   --->   Operation 246 'add' 'add_ln317' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 247 [2/2] (1.92ns)   --->   "%add_ln317_1 = add i7 %k_read, i7 21" [aes.cpp:317]   --->   Operation 247 'add' 'add_ln317_1' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_13 : Operation 248 [2/2] (1.92ns)   --->   "%add_ln318 = add i7 %k_read, i7 22" [aes.cpp:318]   --->   Operation 248 'add' 'add_ln318' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 14 <SV = 13> <Delay = 1.92>
+ST_14 : Operation 249 [1/1] (0.99ns)   --->   "%xor_ln307 = xor i8 %ctx_load_11, i8 %sbox_load_4" [aes.cpp:307]   --->   Operation 249 'xor' 'xor_ln307' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 250 [1/1] (0.99ns)   --->   "%xor_ln311 = xor i8 %ctx_load_37, i8 %xor_ln306" [aes.cpp:311]   --->   Operation 250 'xor' 'xor_ln311' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 251 [1/1] (0.99ns)   --->   "%xor_ln310_4 = xor i8 %ctx_load_40, i8 %xor_ln310_1" [aes.cpp:310]   --->   Operation 251 'xor' 'xor_ln310_4' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 252 [1/1] (0.99ns)   --->   "%xor_ln310_2 = xor i8 %ctx_load_43, i8 %xor_ln310_3" [aes.cpp:310]   --->   Operation 252 'xor' 'xor_ln310_2' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 253 [1/4] (1.86ns)   --->   "%ctx_load_44 = load i7 %ctx_addr_48" [aes.cpp:310]   --->   Operation 253 'load' 'ctx_load_44' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_14 : Operation 254 [1/4] (1.86ns)   --->   "%ctx_load_45 = load i7 %ctx_addr_49" [aes.cpp:311]   --->   Operation 254 'load' 'ctx_load_45' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_14 : Operation 255 [2/4] (1.86ns)   --->   "%ctx_load_46 = load i7 %ctx_addr_50" [aes.cpp:311]   --->   Operation 255 'load' 'ctx_load_46' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_14 : Operation 256 [2/4] (1.86ns)   --->   "%ctx_load_21 = load i7 %ctx_addr_25" [aes.cpp:312]   --->   Operation 256 'load' 'ctx_load_21' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_14 : Operation 257 [3/4] (1.86ns)   --->   "%ctx_load_23 = load i7 %ctx_addr_27" [aes.cpp:313]   --->   Operation 257 'load' 'ctx_load_23' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_14 : Operation 258 [3/4] (1.86ns)   --->   "%ctx_load_25 = load i7 %ctx_addr_29" [aes.cpp:314]   --->   Operation 258 'load' 'ctx_load_25' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_14 : Operation 259 [1/1] (0.00ns)   --->   "%zext_ln315_1 = zext i7 %add_ln315" [aes.cpp:315]   --->   Operation 259 'zext' 'zext_ln315_1' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 260 [1/1] (0.00ns)   --->   "%ctx_addr_31 = getelementptr i8 %ctx, i64 0, i64 %zext_ln315_1" [aes.cpp:315]   --->   Operation 260 'getelementptr' 'ctx_addr_31' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 261 [4/4] (1.86ns)   --->   "%ctx_load_27 = load i7 %ctx_addr_31" [aes.cpp:315]   --->   Operation 261 'load' 'ctx_load_27' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_14 : Operation 262 [1/1] (0.00ns)   --->   "%zext_ln317 = zext i7 %add_ln317" [aes.cpp:317]   --->   Operation 262 'zext' 'zext_ln317' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 263 [1/1] (0.00ns)   --->   "%ctx_addr_51 = getelementptr i8 %ctx, i64 0, i64 %zext_ln317" [aes.cpp:317]   --->   Operation 263 'getelementptr' 'ctx_addr_51' <Predicate = true> <Delay = 0.00>
+ST_14 : Operation 264 [4/4] (1.86ns)   --->   "%ctx_load_47 = load i7 %ctx_addr_51" [aes.cpp:317]   --->   Operation 264 'load' 'ctx_load_47' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_14 : Operation 265 [1/2] (1.92ns)   --->   "%add_ln317_1 = add i7 %k_read, i7 21" [aes.cpp:317]   --->   Operation 265 'add' 'add_ln317_1' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 266 [1/2] (1.92ns)   --->   "%add_ln318 = add i7 %k_read, i7 22" [aes.cpp:318]   --->   Operation 266 'add' 'add_ln318' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 267 [2/2] (1.92ns)   --->   "%add_ln318_1 = add i7 %k_read, i7 23" [aes.cpp:318]   --->   Operation 267 'add' 'add_ln318_1' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_14 : Operation 268 [2/2] (1.92ns)   --->   "%add_ln317_2 = add i7 %k_read, i7 24" [aes.cpp:317]   --->   Operation 268 'add' 'add_ln317_2' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 15 <SV = 14> <Delay = 1.92>
+ST_15 : Operation 269 [1/1] (0.99ns)   --->   "%xor_ln311_1 = xor i8 %ctx_load_38, i8 %xor_ln307" [aes.cpp:311]   --->   Operation 269 'xor' 'xor_ln311_1' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 270 [1/1] (0.99ns)   --->   "%xor_ln311_3 = xor i8 %ctx_load_41, i8 %xor_ln311" [aes.cpp:311]   --->   Operation 270 'xor' 'xor_ln311_3' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 271 [1/1] (0.99ns)   --->   "%xor_ln310_5 = xor i8 %ctx_load_44, i8 %xor_ln310_4" [aes.cpp:310]   --->   Operation 271 'xor' 'xor_ln310_5' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 272 [1/4] (1.86ns)   --->   "%ctx_load_46 = load i7 %ctx_addr_50" [aes.cpp:311]   --->   Operation 272 'load' 'ctx_load_46' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_15 : Operation 273 [1/1] (0.00ns)   --->   "%zext_ln312 = zext i8 %xor_ln310_2" [aes.cpp:312]   --->   Operation 273 'zext' 'zext_ln312' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 274 [1/1] (0.00ns)   --->   "%sbox_addr_5 = getelementptr i8 %sbox, i64 0, i64 %zext_ln312" [aes.cpp:312]   --->   Operation 274 'getelementptr' 'sbox_addr_5' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 275 [4/4] (1.68ns)   --->   "%sbox_load_5 = load i8 %sbox_addr_5" [aes.cpp:312]   --->   Operation 275 'load' 'sbox_load_5' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_15 : Operation 276 [1/4] (1.86ns)   --->   "%ctx_load_21 = load i7 %ctx_addr_25" [aes.cpp:312]   --->   Operation 276 'load' 'ctx_load_21' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_15 : Operation 277 [2/4] (1.86ns)   --->   "%ctx_load_23 = load i7 %ctx_addr_27" [aes.cpp:313]   --->   Operation 277 'load' 'ctx_load_23' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_15 : Operation 278 [2/4] (1.86ns)   --->   "%ctx_load_25 = load i7 %ctx_addr_29" [aes.cpp:314]   --->   Operation 278 'load' 'ctx_load_25' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_15 : Operation 279 [3/4] (1.86ns)   --->   "%ctx_load_27 = load i7 %ctx_addr_31" [aes.cpp:315]   --->   Operation 279 'load' 'ctx_load_27' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_15 : Operation 280 [3/4] (1.86ns)   --->   "%ctx_load_47 = load i7 %ctx_addr_51" [aes.cpp:317]   --->   Operation 280 'load' 'ctx_load_47' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_15 : Operation 281 [1/1] (0.00ns)   --->   "%zext_ln317_1 = zext i7 %add_ln317_1" [aes.cpp:317]   --->   Operation 281 'zext' 'zext_ln317_1' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 282 [1/1] (0.00ns)   --->   "%ctx_addr_52 = getelementptr i8 %ctx, i64 0, i64 %zext_ln317_1" [aes.cpp:317]   --->   Operation 282 'getelementptr' 'ctx_addr_52' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 283 [4/4] (1.86ns)   --->   "%ctx_load_48 = load i7 %ctx_addr_52" [aes.cpp:317]   --->   Operation 283 'load' 'ctx_load_48' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_15 : Operation 284 [1/1] (0.00ns)   --->   "%zext_ln318 = zext i7 %add_ln318" [aes.cpp:318]   --->   Operation 284 'zext' 'zext_ln318' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 285 [1/1] (0.00ns)   --->   "%ctx_addr_53 = getelementptr i8 %ctx, i64 0, i64 %zext_ln318" [aes.cpp:318]   --->   Operation 285 'getelementptr' 'ctx_addr_53' <Predicate = true> <Delay = 0.00>
+ST_15 : Operation 286 [4/4] (1.86ns)   --->   "%ctx_load_49 = load i7 %ctx_addr_53" [aes.cpp:318]   --->   Operation 286 'load' 'ctx_load_49' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_15 : Operation 287 [1/2] (1.92ns)   --->   "%add_ln318_1 = add i7 %k_read, i7 23" [aes.cpp:318]   --->   Operation 287 'add' 'add_ln318_1' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 288 [1/2] (1.92ns)   --->   "%add_ln317_2 = add i7 %k_read, i7 24" [aes.cpp:317]   --->   Operation 288 'add' 'add_ln317_2' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 289 [2/2] (1.92ns)   --->   "%add_ln317_3 = add i7 %k_read, i7 25" [aes.cpp:317]   --->   Operation 289 'add' 'add_ln317_3' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_15 : Operation 290 [2/2] (1.92ns)   --->   "%add_ln318_2 = add i7 %k_read, i7 26" [aes.cpp:318]   --->   Operation 290 'add' 'add_ln318_2' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 16 <SV = 15> <Delay = 1.92>
+ST_16 : Operation 291 [1/1] (0.99ns)   --->   "%xor_ln311_4 = xor i8 %ctx_load_42, i8 %xor_ln311_1" [aes.cpp:311]   --->   Operation 291 'xor' 'xor_ln311_4' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_16 : Operation 292 [1/1] (0.99ns)   --->   "%xor_ln311_2 = xor i8 %ctx_load_45, i8 %xor_ln311_3" [aes.cpp:311]   --->   Operation 292 'xor' 'xor_ln311_2' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_16 : Operation 293 [3/4] (1.68ns)   --->   "%sbox_load_5 = load i8 %sbox_addr_5" [aes.cpp:312]   --->   Operation 293 'load' 'sbox_load_5' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_16 : Operation 294 [1/1] (0.00ns)   --->   "%zext_ln313 = zext i8 %xor_ln310_5" [aes.cpp:313]   --->   Operation 294 'zext' 'zext_ln313' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 295 [1/1] (0.00ns)   --->   "%sbox_addr_6 = getelementptr i8 %sbox, i64 0, i64 %zext_ln313" [aes.cpp:313]   --->   Operation 295 'getelementptr' 'sbox_addr_6' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 296 [4/4] (1.68ns)   --->   "%sbox_load_6 = load i8 %sbox_addr_6" [aes.cpp:313]   --->   Operation 296 'load' 'sbox_load_6' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_16 : Operation 297 [1/4] (1.86ns)   --->   "%ctx_load_23 = load i7 %ctx_addr_27" [aes.cpp:313]   --->   Operation 297 'load' 'ctx_load_23' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_16 : Operation 298 [1/4] (1.86ns)   --->   "%ctx_load_25 = load i7 %ctx_addr_29" [aes.cpp:314]   --->   Operation 298 'load' 'ctx_load_25' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_16 : Operation 299 [2/4] (1.86ns)   --->   "%ctx_load_27 = load i7 %ctx_addr_31" [aes.cpp:315]   --->   Operation 299 'load' 'ctx_load_27' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_16 : Operation 300 [2/4] (1.86ns)   --->   "%ctx_load_47 = load i7 %ctx_addr_51" [aes.cpp:317]   --->   Operation 300 'load' 'ctx_load_47' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_16 : Operation 301 [3/4] (1.86ns)   --->   "%ctx_load_48 = load i7 %ctx_addr_52" [aes.cpp:317]   --->   Operation 301 'load' 'ctx_load_48' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_16 : Operation 302 [3/4] (1.86ns)   --->   "%ctx_load_49 = load i7 %ctx_addr_53" [aes.cpp:318]   --->   Operation 302 'load' 'ctx_load_49' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_16 : Operation 303 [1/1] (0.00ns)   --->   "%zext_ln318_1 = zext i7 %add_ln318_1" [aes.cpp:318]   --->   Operation 303 'zext' 'zext_ln318_1' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 304 [1/1] (0.00ns)   --->   "%ctx_addr_54 = getelementptr i8 %ctx, i64 0, i64 %zext_ln318_1" [aes.cpp:318]   --->   Operation 304 'getelementptr' 'ctx_addr_54' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 305 [4/4] (1.86ns)   --->   "%ctx_load_50 = load i7 %ctx_addr_54" [aes.cpp:318]   --->   Operation 305 'load' 'ctx_load_50' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_16 : Operation 306 [1/1] (0.00ns)   --->   "%zext_ln317_2 = zext i7 %add_ln317_2" [aes.cpp:317]   --->   Operation 306 'zext' 'zext_ln317_2' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 307 [1/1] (0.00ns)   --->   "%ctx_addr_55 = getelementptr i8 %ctx, i64 0, i64 %zext_ln317_2" [aes.cpp:317]   --->   Operation 307 'getelementptr' 'ctx_addr_55' <Predicate = true> <Delay = 0.00>
+ST_16 : Operation 308 [4/4] (1.86ns)   --->   "%ctx_load_51 = load i7 %ctx_addr_55" [aes.cpp:317]   --->   Operation 308 'load' 'ctx_load_51' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_16 : Operation 309 [1/2] (1.92ns)   --->   "%add_ln317_3 = add i7 %k_read, i7 25" [aes.cpp:317]   --->   Operation 309 'add' 'add_ln317_3' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_16 : Operation 310 [1/2] (1.92ns)   --->   "%add_ln318_2 = add i7 %k_read, i7 26" [aes.cpp:318]   --->   Operation 310 'add' 'add_ln318_2' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+ST_16 : Operation 311 [2/2] (1.92ns)   --->   "%add_ln318_3 = add i7 %k_read, i7 27" [aes.cpp:318]   --->   Operation 311 'add' 'add_ln318_3' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 17 <SV = 16> <Delay = 1.92>
+ST_17 : Operation 312 [1/1] (0.99ns)   --->   "%xor_ln311_5 = xor i8 %ctx_load_46, i8 %xor_ln311_4" [aes.cpp:311]   --->   Operation 312 'xor' 'xor_ln311_5' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_17 : Operation 313 [2/4] (1.68ns)   --->   "%sbox_load_5 = load i8 %sbox_addr_5" [aes.cpp:312]   --->   Operation 313 'load' 'sbox_load_5' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_17 : Operation 314 [3/4] (1.68ns)   --->   "%sbox_load_6 = load i8 %sbox_addr_6" [aes.cpp:313]   --->   Operation 314 'load' 'sbox_load_6' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_17 : Operation 315 [1/1] (0.00ns)   --->   "%zext_ln314 = zext i8 %xor_ln311_2" [aes.cpp:314]   --->   Operation 315 'zext' 'zext_ln314' <Predicate = true> <Delay = 0.00>
+ST_17 : Operation 316 [1/1] (0.00ns)   --->   "%sbox_addr_7 = getelementptr i8 %sbox, i64 0, i64 %zext_ln314" [aes.cpp:314]   --->   Operation 316 'getelementptr' 'sbox_addr_7' <Predicate = true> <Delay = 0.00>
+ST_17 : Operation 317 [4/4] (1.68ns)   --->   "%sbox_load_7 = load i8 %sbox_addr_7" [aes.cpp:314]   --->   Operation 317 'load' 'sbox_load_7' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_17 : Operation 318 [1/4] (1.86ns)   --->   "%ctx_load_27 = load i7 %ctx_addr_31" [aes.cpp:315]   --->   Operation 318 'load' 'ctx_load_27' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_17 : Operation 319 [1/4] (1.86ns)   --->   "%ctx_load_47 = load i7 %ctx_addr_51" [aes.cpp:317]   --->   Operation 319 'load' 'ctx_load_47' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_17 : Operation 320 [2/4] (1.86ns)   --->   "%ctx_load_48 = load i7 %ctx_addr_52" [aes.cpp:317]   --->   Operation 320 'load' 'ctx_load_48' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_17 : Operation 321 [2/4] (1.86ns)   --->   "%ctx_load_49 = load i7 %ctx_addr_53" [aes.cpp:318]   --->   Operation 321 'load' 'ctx_load_49' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_17 : Operation 322 [3/4] (1.86ns)   --->   "%ctx_load_50 = load i7 %ctx_addr_54" [aes.cpp:318]   --->   Operation 322 'load' 'ctx_load_50' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_17 : Operation 323 [3/4] (1.86ns)   --->   "%ctx_load_51 = load i7 %ctx_addr_55" [aes.cpp:317]   --->   Operation 323 'load' 'ctx_load_51' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_17 : Operation 324 [1/1] (0.00ns)   --->   "%zext_ln317_3 = zext i7 %add_ln317_3" [aes.cpp:317]   --->   Operation 324 'zext' 'zext_ln317_3' <Predicate = true> <Delay = 0.00>
+ST_17 : Operation 325 [1/1] (0.00ns)   --->   "%ctx_addr_56 = getelementptr i8 %ctx, i64 0, i64 %zext_ln317_3" [aes.cpp:317]   --->   Operation 325 'getelementptr' 'ctx_addr_56' <Predicate = true> <Delay = 0.00>
+ST_17 : Operation 326 [4/4] (1.86ns)   --->   "%ctx_load_52 = load i7 %ctx_addr_56" [aes.cpp:317]   --->   Operation 326 'load' 'ctx_load_52' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_17 : Operation 327 [1/1] (0.00ns)   --->   "%zext_ln318_2 = zext i7 %add_ln318_2" [aes.cpp:318]   --->   Operation 327 'zext' 'zext_ln318_2' <Predicate = true> <Delay = 0.00>
+ST_17 : Operation 328 [1/1] (0.00ns)   --->   "%ctx_addr_57 = getelementptr i8 %ctx, i64 0, i64 %zext_ln318_2" [aes.cpp:318]   --->   Operation 328 'getelementptr' 'ctx_addr_57' <Predicate = true> <Delay = 0.00>
+ST_17 : Operation 329 [4/4] (1.86ns)   --->   "%ctx_load_53 = load i7 %ctx_addr_57" [aes.cpp:318]   --->   Operation 329 'load' 'ctx_load_53' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_17 : Operation 330 [1/2] (1.92ns)   --->   "%add_ln318_3 = add i7 %k_read, i7 27" [aes.cpp:318]   --->   Operation 330 'add' 'add_ln318_3' <Predicate = true> <Delay = 1.92> <CoreInst = "Adder">   --->   Core 1 'Adder' <Latency = 1> <II = 1> <Delay = 1.92> <FuncUnit> <Opcode : 'add' 'sub'> <InPorts = 2> <OutPorts = 1>
+
+State 18 <SV = 17> <Delay = 1.86>
+ST_18 : Operation 331 [2/2] (1.86ns)   --->   "%store_ln304 = store i8 %xor_ln304_1, i7 %ctx_addr_9" [aes.cpp:304]   --->   Operation 331 'store' 'store_ln304' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_18 : Operation 332 [1/4] (1.68ns)   --->   "%sbox_load_5 = load i8 %sbox_addr_5" [aes.cpp:312]   --->   Operation 332 'load' 'sbox_load_5' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_18 : Operation 333 [2/4] (1.68ns)   --->   "%sbox_load_6 = load i8 %sbox_addr_6" [aes.cpp:313]   --->   Operation 333 'load' 'sbox_load_6' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_18 : Operation 334 [3/4] (1.68ns)   --->   "%sbox_load_7 = load i8 %sbox_addr_7" [aes.cpp:314]   --->   Operation 334 'load' 'sbox_load_7' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_18 : Operation 335 [1/1] (0.00ns)   --->   "%zext_ln315 = zext i8 %xor_ln311_5" [aes.cpp:315]   --->   Operation 335 'zext' 'zext_ln315' <Predicate = true> <Delay = 0.00>
+ST_18 : Operation 336 [1/1] (0.00ns)   --->   "%sbox_addr_8 = getelementptr i8 %sbox, i64 0, i64 %zext_ln315" [aes.cpp:315]   --->   Operation 336 'getelementptr' 'sbox_addr_8' <Predicate = true> <Delay = 0.00>
+ST_18 : Operation 337 [4/4] (1.68ns)   --->   "%sbox_load_8 = load i8 %sbox_addr_8" [aes.cpp:315]   --->   Operation 337 'load' 'sbox_load_8' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_18 : Operation 338 [1/4] (1.86ns)   --->   "%ctx_load_48 = load i7 %ctx_addr_52" [aes.cpp:317]   --->   Operation 338 'load' 'ctx_load_48' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_18 : Operation 339 [1/4] (1.86ns)   --->   "%ctx_load_49 = load i7 %ctx_addr_53" [aes.cpp:318]   --->   Operation 339 'load' 'ctx_load_49' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_18 : Operation 340 [2/4] (1.86ns)   --->   "%ctx_load_50 = load i7 %ctx_addr_54" [aes.cpp:318]   --->   Operation 340 'load' 'ctx_load_50' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_18 : Operation 341 [2/4] (1.86ns)   --->   "%ctx_load_51 = load i7 %ctx_addr_55" [aes.cpp:317]   --->   Operation 341 'load' 'ctx_load_51' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_18 : Operation 342 [3/4] (1.86ns)   --->   "%ctx_load_52 = load i7 %ctx_addr_56" [aes.cpp:317]   --->   Operation 342 'load' 'ctx_load_52' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_18 : Operation 343 [3/4] (1.86ns)   --->   "%ctx_load_53 = load i7 %ctx_addr_57" [aes.cpp:318]   --->   Operation 343 'load' 'ctx_load_53' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_18 : Operation 344 [1/1] (0.00ns)   --->   "%zext_ln318_3 = zext i7 %add_ln318_3" [aes.cpp:318]   --->   Operation 344 'zext' 'zext_ln318_3' <Predicate = true> <Delay = 0.00>
+ST_18 : Operation 345 [1/1] (0.00ns)   --->   "%ctx_addr_58 = getelementptr i8 %ctx, i64 0, i64 %zext_ln318_3" [aes.cpp:318]   --->   Operation 345 'getelementptr' 'ctx_addr_58' <Predicate = true> <Delay = 0.00>
+ST_18 : Operation 346 [4/4] (1.86ns)   --->   "%ctx_load_54 = load i7 %ctx_addr_58" [aes.cpp:318]   --->   Operation 346 'load' 'ctx_load_54' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+
+State 19 <SV = 18> <Delay = 1.86>
+ST_19 : Operation 347 [1/2] (1.86ns)   --->   "%store_ln304 = store i8 %xor_ln304_1, i7 %ctx_addr_9" [aes.cpp:304]   --->   Operation 347 'store' 'store_ln304' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_19 : Operation 348 [2/2] (1.86ns)   --->   "%store_ln305 = store i8 %xor_ln305, i7 %ctx_addr_11" [aes.cpp:305]   --->   Operation 348 'store' 'store_ln305' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_19 : Operation 349 [2/2] (1.86ns)   --->   "%store_ln306 = store i8 %xor_ln306, i7 %ctx_addr_13" [aes.cpp:306]   --->   Operation 349 'store' 'store_ln306' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_19 : Operation 350 [1/1] (0.99ns)   --->   "%xor_ln312 = xor i8 %ctx_load_21, i8 %sbox_load_5" [aes.cpp:312]   --->   Operation 350 'xor' 'xor_ln312' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_19 : Operation 351 [1/4] (1.68ns)   --->   "%sbox_load_6 = load i8 %sbox_addr_6" [aes.cpp:313]   --->   Operation 351 'load' 'sbox_load_6' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_19 : Operation 352 [2/4] (1.68ns)   --->   "%sbox_load_7 = load i8 %sbox_addr_7" [aes.cpp:314]   --->   Operation 352 'load' 'sbox_load_7' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_19 : Operation 353 [3/4] (1.68ns)   --->   "%sbox_load_8 = load i8 %sbox_addr_8" [aes.cpp:315]   --->   Operation 353 'load' 'sbox_load_8' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_19 : Operation 354 [1/4] (1.86ns)   --->   "%ctx_load_50 = load i7 %ctx_addr_54" [aes.cpp:318]   --->   Operation 354 'load' 'ctx_load_50' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_19 : Operation 355 [1/4] (1.86ns)   --->   "%ctx_load_51 = load i7 %ctx_addr_55" [aes.cpp:317]   --->   Operation 355 'load' 'ctx_load_51' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_19 : Operation 356 [2/4] (1.86ns)   --->   "%ctx_load_52 = load i7 %ctx_addr_56" [aes.cpp:317]   --->   Operation 356 'load' 'ctx_load_52' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_19 : Operation 357 [2/4] (1.86ns)   --->   "%ctx_load_53 = load i7 %ctx_addr_57" [aes.cpp:318]   --->   Operation 357 'load' 'ctx_load_53' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_19 : Operation 358 [3/4] (1.86ns)   --->   "%ctx_load_54 = load i7 %ctx_addr_58" [aes.cpp:318]   --->   Operation 358 'load' 'ctx_load_54' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+
+State 20 <SV = 19> <Delay = 1.86>
+ST_20 : Operation 359 [1/2] (1.86ns)   --->   "%store_ln305 = store i8 %xor_ln305, i7 %ctx_addr_11" [aes.cpp:305]   --->   Operation 359 'store' 'store_ln305' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_20 : Operation 360 [1/2] (1.86ns)   --->   "%store_ln306 = store i8 %xor_ln306, i7 %ctx_addr_13" [aes.cpp:306]   --->   Operation 360 'store' 'store_ln306' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_20 : Operation 361 [2/2] (1.86ns)   --->   "%store_ln307 = store i8 %xor_ln307, i7 %ctx_addr_15" [aes.cpp:307]   --->   Operation 361 'store' 'store_ln307' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_20 : Operation 362 [2/2] (1.86ns)   --->   "%store_ln310 = store i8 %xor_ln310, i7 %ctx_addr_39" [aes.cpp:310]   --->   Operation 362 'store' 'store_ln310' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_20 : Operation 363 [1/1] (0.99ns)   --->   "%xor_ln313 = xor i8 %ctx_load_23, i8 %sbox_load_6" [aes.cpp:313]   --->   Operation 363 'xor' 'xor_ln313' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_20 : Operation 364 [1/4] (1.68ns)   --->   "%sbox_load_7 = load i8 %sbox_addr_7" [aes.cpp:314]   --->   Operation 364 'load' 'sbox_load_7' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_20 : Operation 365 [2/4] (1.68ns)   --->   "%sbox_load_8 = load i8 %sbox_addr_8" [aes.cpp:315]   --->   Operation 365 'load' 'sbox_load_8' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_20 : Operation 366 [1/1] (0.99ns)   --->   "%xor_ln317 = xor i8 %ctx_load_47, i8 %xor_ln312" [aes.cpp:317]   --->   Operation 366 'xor' 'xor_ln317' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_20 : Operation 367 [1/4] (1.86ns)   --->   "%ctx_load_52 = load i7 %ctx_addr_56" [aes.cpp:317]   --->   Operation 367 'load' 'ctx_load_52' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_20 : Operation 368 [1/4] (1.86ns)   --->   "%ctx_load_53 = load i7 %ctx_addr_57" [aes.cpp:318]   --->   Operation 368 'load' 'ctx_load_53' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_20 : Operation 369 [2/4] (1.86ns)   --->   "%ctx_load_54 = load i7 %ctx_addr_58" [aes.cpp:318]   --->   Operation 369 'load' 'ctx_load_54' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+
+State 21 <SV = 20> <Delay = 1.86>
+ST_21 : Operation 370 [1/2] (1.86ns)   --->   "%store_ln307 = store i8 %xor_ln307, i7 %ctx_addr_15" [aes.cpp:307]   --->   Operation 370 'store' 'store_ln307' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_21 : Operation 371 [1/2] (1.86ns)   --->   "%store_ln310 = store i8 %xor_ln310, i7 %ctx_addr_39" [aes.cpp:310]   --->   Operation 371 'store' 'store_ln310' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_21 : Operation 372 [2/2] (1.86ns)   --->   "%store_ln310 = store i8 %xor_ln310_1, i7 %ctx_addr_40" [aes.cpp:310]   --->   Operation 372 'store' 'store_ln310' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_21 : Operation 373 [2/2] (1.86ns)   --->   "%store_ln311 = store i8 %xor_ln311, i7 %ctx_addr_41" [aes.cpp:311]   --->   Operation 373 'store' 'store_ln311' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_21 : Operation 374 [1/1] (0.99ns)   --->   "%xor_ln314 = xor i8 %ctx_load_25, i8 %sbox_load_7" [aes.cpp:314]   --->   Operation 374 'xor' 'xor_ln314' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_21 : Operation 375 [1/4] (1.68ns)   --->   "%sbox_load_8 = load i8 %sbox_addr_8" [aes.cpp:315]   --->   Operation 375 'load' 'sbox_load_8' <Predicate = true> <Delay = 1.68> <CoreInst = "ROM">   --->   Core 95 'ROM' <Latency = 3> <II = 1> <Delay = 1.68> <Storage> <Opcode : 'load'> <Ports = 0> <Width = 8> <Depth = 256> <ROM>
+ST_21 : Operation 376 [1/1] (0.99ns)   --->   "%xor_ln317_1 = xor i8 %ctx_load_48, i8 %xor_ln313" [aes.cpp:317]   --->   Operation 376 'xor' 'xor_ln317_1' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_21 : Operation 377 [1/1] (0.99ns)   --->   "%xor_ln317_3 = xor i8 %ctx_load_51, i8 %xor_ln317" [aes.cpp:317]   --->   Operation 377 'xor' 'xor_ln317_3' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_21 : Operation 378 [1/4] (1.86ns)   --->   "%ctx_load_54 = load i7 %ctx_addr_58" [aes.cpp:318]   --->   Operation 378 'load' 'ctx_load_54' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+
+State 22 <SV = 21> <Delay = 1.86>
+ST_22 : Operation 379 [1/2] (1.86ns)   --->   "%store_ln310 = store i8 %xor_ln310_1, i7 %ctx_addr_40" [aes.cpp:310]   --->   Operation 379 'store' 'store_ln310' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_22 : Operation 380 [1/2] (1.86ns)   --->   "%store_ln311 = store i8 %xor_ln311, i7 %ctx_addr_41" [aes.cpp:311]   --->   Operation 380 'store' 'store_ln311' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_22 : Operation 381 [2/2] (1.86ns)   --->   "%store_ln311 = store i8 %xor_ln311_1, i7 %ctx_addr_42" [aes.cpp:311]   --->   Operation 381 'store' 'store_ln311' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_22 : Operation 382 [2/2] (1.86ns)   --->   "%store_ln310 = store i8 %xor_ln310_3, i7 %ctx_addr_43" [aes.cpp:310]   --->   Operation 382 'store' 'store_ln310' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_22 : Operation 383 [1/1] (0.99ns)   --->   "%xor_ln315 = xor i8 %ctx_load_27, i8 %sbox_load_8" [aes.cpp:315]   --->   Operation 383 'xor' 'xor_ln315' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_22 : Operation 384 [1/1] (0.99ns)   --->   "%xor_ln318 = xor i8 %ctx_load_49, i8 %xor_ln314" [aes.cpp:318]   --->   Operation 384 'xor' 'xor_ln318' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_22 : Operation 385 [1/1] (0.99ns)   --->   "%xor_ln317_4 = xor i8 %ctx_load_52, i8 %xor_ln317_1" [aes.cpp:317]   --->   Operation 385 'xor' 'xor_ln317_4' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+
+State 23 <SV = 22> <Delay = 1.86>
+ST_23 : Operation 386 [1/2] (1.86ns)   --->   "%store_ln311 = store i8 %xor_ln311_1, i7 %ctx_addr_42" [aes.cpp:311]   --->   Operation 386 'store' 'store_ln311' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_23 : Operation 387 [1/2] (1.86ns)   --->   "%store_ln310 = store i8 %xor_ln310_3, i7 %ctx_addr_43" [aes.cpp:310]   --->   Operation 387 'store' 'store_ln310' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_23 : Operation 388 [2/2] (1.86ns)   --->   "%store_ln310 = store i8 %xor_ln310_4, i7 %ctx_addr_44" [aes.cpp:310]   --->   Operation 388 'store' 'store_ln310' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_23 : Operation 389 [2/2] (1.86ns)   --->   "%store_ln311 = store i8 %xor_ln311_3, i7 %ctx_addr_45" [aes.cpp:311]   --->   Operation 389 'store' 'store_ln311' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_23 : Operation 390 [1/1] (0.99ns)   --->   "%xor_ln318_1 = xor i8 %ctx_load_50, i8 %xor_ln315" [aes.cpp:318]   --->   Operation 390 'xor' 'xor_ln318_1' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_23 : Operation 391 [1/1] (0.99ns)   --->   "%xor_ln318_3 = xor i8 %ctx_load_53, i8 %xor_ln318" [aes.cpp:318]   --->   Operation 391 'xor' 'xor_ln318_3' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+
+State 24 <SV = 23> <Delay = 1.86>
+ST_24 : Operation 392 [1/2] (1.86ns)   --->   "%store_ln310 = store i8 %xor_ln310_4, i7 %ctx_addr_44" [aes.cpp:310]   --->   Operation 392 'store' 'store_ln310' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_24 : Operation 393 [1/2] (1.86ns)   --->   "%store_ln311 = store i8 %xor_ln311_3, i7 %ctx_addr_45" [aes.cpp:311]   --->   Operation 393 'store' 'store_ln311' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_24 : Operation 394 [2/2] (1.86ns)   --->   "%store_ln311 = store i8 %xor_ln311_4, i7 %ctx_addr_46" [aes.cpp:311]   --->   Operation 394 'store' 'store_ln311' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_24 : Operation 395 [2/2] (1.86ns)   --->   "%store_ln310 = store i8 %xor_ln310_2, i7 %ctx_addr_47" [aes.cpp:310]   --->   Operation 395 'store' 'store_ln310' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_24 : Operation 396 [1/1] (0.99ns)   --->   "%xor_ln318_4 = xor i8 %ctx_load_54, i8 %xor_ln318_1" [aes.cpp:318]   --->   Operation 396 'xor' 'xor_ln318_4' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+
+State 25 <SV = 24> <Delay = 1.86>
+ST_25 : Operation 397 [1/2] (1.86ns)   --->   "%store_ln311 = store i8 %xor_ln311_4, i7 %ctx_addr_46" [aes.cpp:311]   --->   Operation 397 'store' 'store_ln311' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_25 : Operation 398 [1/2] (1.86ns)   --->   "%store_ln310 = store i8 %xor_ln310_2, i7 %ctx_addr_47" [aes.cpp:310]   --->   Operation 398 'store' 'store_ln310' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_25 : Operation 399 [2/2] (1.86ns)   --->   "%store_ln310 = store i8 %xor_ln310_5, i7 %ctx_addr_48" [aes.cpp:310]   --->   Operation 399 'store' 'store_ln310' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_25 : Operation 400 [2/2] (1.86ns)   --->   "%store_ln311 = store i8 %xor_ln311_2, i7 %ctx_addr_49" [aes.cpp:311]   --->   Operation 400 'store' 'store_ln311' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+
+State 26 <SV = 25> <Delay = 1.86>
+ST_26 : Operation 401 [1/2] (1.86ns)   --->   "%store_ln310 = store i8 %xor_ln310_5, i7 %ctx_addr_48" [aes.cpp:310]   --->   Operation 401 'store' 'store_ln310' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_26 : Operation 402 [1/2] (1.86ns)   --->   "%store_ln311 = store i8 %xor_ln311_2, i7 %ctx_addr_49" [aes.cpp:311]   --->   Operation 402 'store' 'store_ln311' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_26 : Operation 403 [2/2] (1.86ns)   --->   "%store_ln311 = store i8 %xor_ln311_5, i7 %ctx_addr_50" [aes.cpp:311]   --->   Operation 403 'store' 'store_ln311' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_26 : Operation 404 [2/2] (1.86ns)   --->   "%store_ln312 = store i8 %xor_ln312, i7 %ctx_addr_25" [aes.cpp:312]   --->   Operation 404 'store' 'store_ln312' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+
+State 27 <SV = 26> <Delay = 1.86>
+ST_27 : Operation 405 [1/2] (1.86ns)   --->   "%store_ln311 = store i8 %xor_ln311_5, i7 %ctx_addr_50" [aes.cpp:311]   --->   Operation 405 'store' 'store_ln311' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_27 : Operation 406 [1/2] (1.86ns)   --->   "%store_ln312 = store i8 %xor_ln312, i7 %ctx_addr_25" [aes.cpp:312]   --->   Operation 406 'store' 'store_ln312' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_27 : Operation 407 [2/2] (1.86ns)   --->   "%store_ln313 = store i8 %xor_ln313, i7 %ctx_addr_27" [aes.cpp:313]   --->   Operation 407 'store' 'store_ln313' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_27 : Operation 408 [2/2] (1.86ns)   --->   "%store_ln314 = store i8 %xor_ln314, i7 %ctx_addr_29" [aes.cpp:314]   --->   Operation 408 'store' 'store_ln314' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+
+State 28 <SV = 27> <Delay = 1.86>
+ST_28 : Operation 409 [1/2] (1.86ns)   --->   "%store_ln313 = store i8 %xor_ln313, i7 %ctx_addr_27" [aes.cpp:313]   --->   Operation 409 'store' 'store_ln313' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_28 : Operation 410 [1/2] (1.86ns)   --->   "%store_ln314 = store i8 %xor_ln314, i7 %ctx_addr_29" [aes.cpp:314]   --->   Operation 410 'store' 'store_ln314' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_28 : Operation 411 [2/2] (1.86ns)   --->   "%store_ln315 = store i8 %xor_ln315, i7 %ctx_addr_31" [aes.cpp:315]   --->   Operation 411 'store' 'store_ln315' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_28 : Operation 412 [2/2] (1.86ns)   --->   "%store_ln317 = store i8 %xor_ln317, i7 %ctx_addr_51" [aes.cpp:317]   --->   Operation 412 'store' 'store_ln317' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+
+State 29 <SV = 28> <Delay = 1.86>
+ST_29 : Operation 413 [1/2] (1.86ns)   --->   "%store_ln315 = store i8 %xor_ln315, i7 %ctx_addr_31" [aes.cpp:315]   --->   Operation 413 'store' 'store_ln315' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_29 : Operation 414 [1/2] (1.86ns)   --->   "%store_ln317 = store i8 %xor_ln317, i7 %ctx_addr_51" [aes.cpp:317]   --->   Operation 414 'store' 'store_ln317' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_29 : Operation 415 [2/2] (1.86ns)   --->   "%store_ln317 = store i8 %xor_ln317_1, i7 %ctx_addr_52" [aes.cpp:317]   --->   Operation 415 'store' 'store_ln317' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_29 : Operation 416 [2/2] (1.86ns)   --->   "%store_ln318 = store i8 %xor_ln318, i7 %ctx_addr_53" [aes.cpp:318]   --->   Operation 416 'store' 'store_ln318' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+
+State 30 <SV = 29> <Delay = 1.86>
+ST_30 : Operation 417 [1/2] (1.86ns)   --->   "%store_ln317 = store i8 %xor_ln317_1, i7 %ctx_addr_52" [aes.cpp:317]   --->   Operation 417 'store' 'store_ln317' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_30 : Operation 418 [1/2] (1.86ns)   --->   "%store_ln318 = store i8 %xor_ln318, i7 %ctx_addr_53" [aes.cpp:318]   --->   Operation 418 'store' 'store_ln318' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_30 : Operation 419 [2/2] (1.86ns)   --->   "%store_ln318 = store i8 %xor_ln318_1, i7 %ctx_addr_54" [aes.cpp:318]   --->   Operation 419 'store' 'store_ln318' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_30 : Operation 420 [2/2] (1.86ns)   --->   "%store_ln317 = store i8 %xor_ln317_3, i7 %ctx_addr_55" [aes.cpp:317]   --->   Operation 420 'store' 'store_ln317' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_30 : Operation 421 [1/1] (0.99ns)   --->   "%xor_ln317_2 = xor i8 %ctx_load_10, i8 %xor_ln317_3" [aes.cpp:317]   --->   Operation 421 'xor' 'xor_ln317_2' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+
+State 31 <SV = 30> <Delay = 1.86>
+ST_31 : Operation 422 [1/2] (1.86ns)   --->   "%store_ln318 = store i8 %xor_ln318_1, i7 %ctx_addr_54" [aes.cpp:318]   --->   Operation 422 'store' 'store_ln318' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_31 : Operation 423 [1/2] (1.86ns)   --->   "%store_ln317 = store i8 %xor_ln317_3, i7 %ctx_addr_55" [aes.cpp:317]   --->   Operation 423 'store' 'store_ln317' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_31 : Operation 424 [2/2] (1.86ns)   --->   "%store_ln317 = store i8 %xor_ln317_4, i7 %ctx_addr_56" [aes.cpp:317]   --->   Operation 424 'store' 'store_ln317' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_31 : Operation 425 [2/2] (1.86ns)   --->   "%store_ln318 = store i8 %xor_ln318_3, i7 %ctx_addr_57" [aes.cpp:318]   --->   Operation 425 'store' 'store_ln318' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_31 : Operation 426 [1/1] (0.99ns)   --->   "%xor_ln317_5 = xor i8 %ctx_load, i8 %xor_ln317_4" [aes.cpp:317]   --->   Operation 426 'xor' 'xor_ln317_5' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+ST_31 : Operation 427 [1/1] (0.99ns)   --->   "%xor_ln318_2 = xor i8 %ctx_load_6, i8 %xor_ln318_3" [aes.cpp:318]   --->   Operation 427 'xor' 'xor_ln318_2' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+
+State 32 <SV = 31> <Delay = 1.86>
+ST_32 : Operation 428 [1/2] (1.86ns)   --->   "%store_ln317 = store i8 %xor_ln317_4, i7 %ctx_addr_56" [aes.cpp:317]   --->   Operation 428 'store' 'store_ln317' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_32 : Operation 429 [1/2] (1.86ns)   --->   "%store_ln318 = store i8 %xor_ln318_3, i7 %ctx_addr_57" [aes.cpp:318]   --->   Operation 429 'store' 'store_ln318' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_32 : Operation 430 [2/2] (1.86ns)   --->   "%store_ln318 = store i8 %xor_ln318_4, i7 %ctx_addr_58" [aes.cpp:318]   --->   Operation 430 'store' 'store_ln318' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_32 : Operation 431 [2/2] (1.86ns)   --->   "%store_ln317 = store i8 %xor_ln317_2, i7 %ctx_addr_14" [aes.cpp:317]   --->   Operation 431 'store' 'store_ln317' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_32 : Operation 432 [1/1] (0.99ns)   --->   "%xor_ln318_5 = xor i8 %ctx_load_8, i8 %xor_ln318_4" [aes.cpp:318]   --->   Operation 432 'xor' 'xor_ln318_5' <Predicate = true> <Delay = 0.99> <CoreInst = "LogicGate">   --->   Core 74 'LogicGate' <Latency = 0> <II = 1> <Delay = 0.99> <FuncUnit> <Opcode : 'and' 'or' 'xor'> <InPorts = 2> <OutPorts = 1>
+
+State 33 <SV = 32> <Delay = 1.86>
+ST_33 : Operation 433 [1/2] (1.86ns)   --->   "%store_ln318 = store i8 %xor_ln318_4, i7 %ctx_addr_58" [aes.cpp:318]   --->   Operation 433 'store' 'store_ln318' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_33 : Operation 434 [1/2] (1.86ns)   --->   "%store_ln317 = store i8 %xor_ln317_2, i7 %ctx_addr_14" [aes.cpp:317]   --->   Operation 434 'store' 'store_ln317' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_33 : Operation 435 [2/2] (1.86ns)   --->   "%store_ln317 = store i8 %xor_ln317_5, i7 %ctx_addr" [aes.cpp:317]   --->   Operation 435 'store' 'store_ln317' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+
+State 34 <SV = 33> <Delay = 1.86>
+ST_34 : Operation 436 [1/2] (1.86ns)   --->   "%store_ln317 = store i8 %xor_ln317_5, i7 %ctx_addr" [aes.cpp:317]   --->   Operation 436 'store' 'store_ln317' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_34 : Operation 437 [2/2] (1.86ns)   --->   "%store_ln318 = store i8 %xor_ln318_2, i7 %ctx_addr_10" [aes.cpp:318]   --->   Operation 437 'store' 'store_ln318' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_34 : Operation 438 [2/2] (1.86ns)   --->   "%store_ln318 = store i8 %xor_ln318_5, i7 %ctx_addr_12" [aes.cpp:318]   --->   Operation 438 'store' 'store_ln318' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+
+State 35 <SV = 34> <Delay = 1.86>
+ST_35 : Operation 439 [1/1] (0.00ns)   --->   "%specinterface_ln0 = specinterface void @_ssdm_op_SpecInterface, i8 %ctx, void @empty_6, i32 0, i32 0, void @empty, i32 4294967295, i32 0, void @empty, void @empty, void @empty, i32 0, i32 0, i32 0, i32 0, void @empty, void @empty"   --->   Operation 439 'specinterface' 'specinterface_ln0' <Predicate = true> <Delay = 0.00>
+ST_35 : Operation 440 [1/2] (1.86ns)   --->   "%store_ln318 = store i8 %xor_ln318_2, i7 %ctx_addr_10" [aes.cpp:318]   --->   Operation 440 'store' 'store_ln318' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_35 : Operation 441 [1/2] (1.86ns)   --->   "%store_ln318 = store i8 %xor_ln318_5, i7 %ctx_addr_12" [aes.cpp:318]   --->   Operation 441 'store' 'store_ln318' <Predicate = true> <Delay = 1.86> <CoreInst = "RAM">   --->   Core 82 'RAM' <Latency = 3> <II = 1> <Delay = 1.86> <Storage> <Opcode : 'load' 'store'> <Ports = 2> <Width = 8> <Depth = 96> <RAM>
+ST_35 : Operation 442 [1/1] (0.00ns)   --->   "%ret_ln320 = ret i8 %xor_ln308" [aes.cpp:320]   --->   Operation 442 'ret' 'ret_ln320' <Predicate = true> <Delay = 0.00>
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 2ns, clock uncertainty: 0.54ns.
+
+ <State 1>: 1.92ns
+The critical path consists of the following:
+	wire read on port 'k' [7]  (0 ns)
+	'add' operation ('add_ln304', aes.cpp:304) [10]  (1.92 ns)
+
+ <State 2>: 1.92ns
+The critical path consists of the following:
+	'add' operation ('add_ln304', aes.cpp:304) [10]  (1.92 ns)
+
+ <State 3>: 1.92ns
+The critical path consists of the following:
+	'add' operation ('add_ln305_1', aes.cpp:305) [29]  (1.92 ns)
+
+ <State 4>: 1.92ns
+The critical path consists of the following:
+	'add' operation ('add_ln305_1', aes.cpp:305) [29]  (1.92 ns)
+
+ <State 5>: 1.92ns
+The critical path consists of the following:
+	'add' operation ('add_ln307_1', aes.cpp:307) [55]  (1.92 ns)
+
+ <State 6>: 1.92ns
+The critical path consists of the following:
+	'add' operation ('add_ln310_1', aes.cpp:310) [71]  (1.92 ns)
+
+ <State 7>: 1.92ns
+The critical path consists of the following:
+	'add' operation ('add_ln311_1', aes.cpp:311) [83]  (1.92 ns)
+
+ <State 8>: 1.92ns
+The critical path consists of the following:
+	'add' operation ('add_ln310_3', aes.cpp:310) [95]  (1.92 ns)
+
+ <State 9>: 1.92ns
+The critical path consists of the following:
+	'add' operation ('add_ln311_3', aes.cpp:311) [107]  (1.92 ns)
+
+ <State 10>: 1.92ns
+The critical path consists of the following:
+	'add' operation ('add_ln310_5', aes.cpp:310) [119]  (1.92 ns)
+
+ <State 11>: 1.92ns
+The critical path consists of the following:
+	'add' operation ('add_ln311_5', aes.cpp:311) [131]  (1.92 ns)
+
+ <State 12>: 1.92ns
+The critical path consists of the following:
+	'add' operation ('add_ln313', aes.cpp:313) [149]  (1.92 ns)
+
+ <State 13>: 1.92ns
+The critical path consists of the following:
+	'add' operation ('add_ln315', aes.cpp:315) [167]  (1.92 ns)
+
+ <State 14>: 1.92ns
+The critical path consists of the following:
+	'add' operation ('add_ln317_1', aes.cpp:317) [179]  (1.92 ns)
+
+ <State 15>: 1.92ns
+The critical path consists of the following:
+	'add' operation ('add_ln318_1', aes.cpp:318) [191]  (1.92 ns)
+
+ <State 16>: 1.92ns
+The critical path consists of the following:
+	'add' operation ('add_ln317_3', aes.cpp:317) [203]  (1.92 ns)
+
+ <State 17>: 1.92ns
+The critical path consists of the following:
+	'add' operation ('add_ln318_3', aes.cpp:318) [215]  (1.92 ns)
+
+ <State 18>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln304', aes.cpp:304) of variable 'xor_ln304_1', aes.cpp:304 on array 'ctx' [21]  (1.87 ns)
+
+ <State 19>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln304', aes.cpp:304) of variable 'xor_ln304_1', aes.cpp:304 on array 'ctx' [21]  (1.87 ns)
+
+ <State 20>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln305', aes.cpp:305) of variable 'xor_ln305', aes.cpp:305 on array 'ctx' [34]  (1.87 ns)
+
+ <State 21>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln307', aes.cpp:307) of variable 'xor_ln307', aes.cpp:307 on array 'ctx' [60]  (1.87 ns)
+
+ <State 22>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln310', aes.cpp:310) of variable 'xor_ln310_1', aes.cpp:310 on array 'ctx' [76]  (1.87 ns)
+
+ <State 23>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln311', aes.cpp:311) of variable 'xor_ln311_1', aes.cpp:311 on array 'ctx' [88]  (1.87 ns)
+
+ <State 24>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln310', aes.cpp:310) of variable 'xor_ln310_4', aes.cpp:310 on array 'ctx' [100]  (1.87 ns)
+
+ <State 25>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln311', aes.cpp:311) of variable 'xor_ln311_4', aes.cpp:311 on array 'ctx' [112]  (1.87 ns)
+
+ <State 26>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln310', aes.cpp:310) of variable 'xor_ln310_5', aes.cpp:310 on array 'ctx' [124]  (1.87 ns)
+
+ <State 27>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln311', aes.cpp:311) of variable 'xor_ln311_5', aes.cpp:311 on array 'ctx' [136]  (1.87 ns)
+
+ <State 28>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln313', aes.cpp:313) of variable 'xor_ln313', aes.cpp:313 on array 'ctx' [154]  (1.87 ns)
+
+ <State 29>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln315', aes.cpp:315) of variable 'xor_ln315', aes.cpp:315 on array 'ctx' [172]  (1.87 ns)
+
+ <State 30>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln317', aes.cpp:317) of variable 'xor_ln317_1', aes.cpp:317 on array 'ctx' [184]  (1.87 ns)
+
+ <State 31>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln318', aes.cpp:318) of variable 'xor_ln318_1', aes.cpp:318 on array 'ctx' [196]  (1.87 ns)
+
+ <State 32>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln317', aes.cpp:317) of variable 'xor_ln317_4', aes.cpp:317 on array 'ctx' [208]  (1.87 ns)
+
+ <State 33>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln318', aes.cpp:318) of variable 'xor_ln318_4', aes.cpp:318 on array 'ctx' [220]  (1.87 ns)
+
+ <State 34>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln317', aes.cpp:317) of variable 'xor_ln317_5', aes.cpp:317 on array 'ctx' [224]  (1.87 ns)
+
+ <State 35>: 1.87ns
+The critical path consists of the following:
+	'store' operation ('store_ln318', aes.cpp:318) of variable 'xor_ln318_2', aes.cpp:318 on array 'ctx' [226]  (1.87 ns)
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+	State 5
+	State 6
+	State 7
+	State 8
+	State 9
+	State 10
+	State 11
+	State 12
+	State 13
+	State 14
+	State 15
+	State 16
+	State 17
+	State 18
+	State 19
+	State 20
+	State 21
+	State 22
+	State 23
+	State 24
+	State 25
+	State 26
+	State 27
+	State 28
+	State 29
+	State 30
+	State 31
+	State 32
+	State 33
+	State 34
+	State 35
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A
