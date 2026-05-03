@@ -104,6 +104,22 @@ void createRandomTestBench(const std::filesystem::path &pathToVerilatorTb,
 void createCexTestBench(const std::filesystem::path &pathToVerilatorTb,
                         RTLIL::Module *module, ModelCheckingResult cex,
                         const std::string &vcdFileName) {
+  // print cex content if unsafe
+  if (cex.status == ModelCheckingResult::UNSAFE) {
+    std::cerr << "[INFO] CEX status: UNSAFE\n";
+    std::cerr << "[INFO] CEX input values:\n";
+    std::cerr << "[INFO] Number of CEX states: " << cex.numCexStates << "\n";
+    for (const auto &pair : cex.inputValues) {
+      std::cerr << "Signal: " << pair.first.str() << " Values: ";
+      for (const auto &val : pair.second) {
+        std::cerr << val << " ";
+      }
+      std::cerr << "\n";
+    }
+  } else {
+    std::cerr << "[INFO] CEX status: " << (cex.status == ModelCheckingResult::SAFE ? "SAFE" : "UNKNOWN") << "\n";
+  }
+    
   std::ofstream os(pathToVerilatorTb);
 
   if (!os.is_open()) {
@@ -193,8 +209,28 @@ void runVerilatorLinting(const std::vector<std::string> &verilogSrcs,
 
   std::stringstream verilatorCmd;
   verilatorCmd << std::filesystem::path(PROMISE_BINARIES_DIR) / "verilator";
-  verilatorCmd
-      << " --lint-only -Wall --Wno-UNUSED --Wno-WIDTHTRUNC --top-module "
+    verilatorCmd
+      << " --lint-only "
+      << " --Wall"
+      << " --Wno-UNUSED"
+      << " --Wno-WIDTHTRUNC"
+      << " --Wno-WIDTHEXPAND"
+      << " --Wno-WIDTHXZEXPAND"
+      << " --Wno-DECLFILENAME"
+      << " --Wno-UNDRIVEN"
+      << " --Wno-EOFNEWLINE"
+      << " --Wno-BLKSEQ"
+      << " --Wno-PINCONNECTEMPTY"
+      << " --Wno-PROCASSINIT"
+      << " --Wno-PINMISSING"
+      << " --Wno-GENUNNAMED"
+      << " --Wno-UNOPTFLAT"
+      << " --Wno-LATCH"
+      << " --Wno-COMBDLY"
+      << " --Wno-SYMRSVDWORD"
+      << " --Wno-CASEINCOMPLETE"
+      << " --Wno-ASCRANGE"
+      << " --top-module "
       << topName;
   for (const auto &src : verilogSrcs) {
     verilatorCmd << " " << src;

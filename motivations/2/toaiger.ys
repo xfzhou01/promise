@@ -1,0 +1,10 @@
+read -sv main.v
+prep -top top
+flatten
+memory -nordff
+setundef -undriven -init -expose
+sim -clock clk -reset rst -rstlen 1 -n 1 -w top
+delete -output
+techmap
+abc -fast -g AND
+write_aiger -zinit -ascii -symbols main.aag

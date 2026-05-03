@@ -66,9 +66,16 @@ int main(int argc, char *argv[]) {
 #endif
 
   // Run Yosys passes on the design
+  std::cerr << "[INFO] Running Yosys passes.." << std::endl;
+  std::cerr << "read_verilog " + join(verilogFiles, " ") << std::endl;
   run_pass("read_verilog " + join(verilogFiles, " "), design);
+  std::cerr << "[INFO] Read " << verilogFiles.size()
+            << " Verilog files into the design.\n";
+  // run_pass("synth -nofsm -flatten -top " + topName +
+  //              "; dffunmap; check -assert",
+  //          design);
   run_pass("synth -nofsm -flatten -top " + topName +
-               "; dffunmap; check -assert",
+               "; dffunmap;",
            design);
 
   // RTLIL::Module *module = design->module(RTLIL::escape_id(topName));

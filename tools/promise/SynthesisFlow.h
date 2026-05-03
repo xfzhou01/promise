@@ -65,6 +65,9 @@ public:
 
   void newProofIteration() { proofIteration += 1; }
   void newSimIteration() { simIteration += 1; }
+
+  int getProofIteration() const { return proofIteration; }
+  int getSimIteration() const { return simIteration; }
 };
 
 bool synthesisFlow(SynthesisFlowConfig config, RTLIL::Design *design,

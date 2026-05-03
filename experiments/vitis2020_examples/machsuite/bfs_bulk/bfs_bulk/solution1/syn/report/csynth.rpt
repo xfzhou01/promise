@@ -1,0 +1,27 @@
+
+
+================================================================
+== Synthesis Summary Report of 'bfs_top'
+================================================================
++ General Information: 
+    * Date:           Sun Jul 20 20:31:18 2025
+    * Version:        2020.2 (Build 3064766 on Wed Nov 18 09:12:47 MST 2020)
+    * Project:        bfs_bulk
+    * Solution:       solution1 (Vivado IP Flow Target)
+    * Product family: zynq
+    * Target device:  xc7z020-clg484-1
+    
+
++ Performance & Resource Estimates: 
+    
+    PS: '+' for module; 'o' for loop; '*' for dataflow
+    +---------------------+--------+-------+---------+--------+----------+---------+------+----------+------+----+-----------+----------+-----+
+    |       Modules       |  Issue |       | Latency | Latency| Iteration|         | Trip |          |      |    |           |          |     |
+    |       & Loops       |  Type  | Slack | (cycles)|  (ns)  |  Latency | Interval| Count| Pipelined| BRAM | DSP|     FF    |    LUT   | URAM|
+    +---------------------+--------+-------+---------+--------+----------+---------+------+----------+------+----+-----------+----------+-----+
+    |+ bfs_top            |  Timing|   1.32|        -|       -|         -|        -|     -|        no|     -|   -|  2040 (1%)|  636 (1%)|    -|
+    | o loop_horizons     |       -|  -1.46|        -|       -|         -|        -|     -|        no|     -|   -|          -|         -|    -|
+    |  o loop_nodes       |       -|  -1.46|        -|       -|         -|        -|     -|        no|     -|   -|          -|         -|    -|
+    |   o loop_neighbors  |      II|  -1.46|        -|       -|        12|        6|     -|       yes|     -|   -|          -|         -|    -|
+    +---------------------+--------+-------+---------+--------+----------+---------+------+----------+------+----+-----------+----------+-----+
+

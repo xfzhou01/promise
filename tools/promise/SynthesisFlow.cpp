@@ -18,6 +18,7 @@
 #include <Eigen/src/Core/Matrix.h>
 #include <iostream>
 #include <tuple>
+#define USING_ABC_PDR
 
 // Compressing the unique rows from a vector of matrices into one matrix
 Eigen::MatrixXi getUniqueRows(const vector<Eigen::MatrixXi> &matrices) {
@@ -130,9 +131,11 @@ void flowScorrInvar(const SynthesisFlowConfig &config, RTLIL::Module *m,
                        /* separateInvariants = */ false);
 
   auto miterVerilog = config.getSynthResultDir() / "design_invariants.v";
+  std::cout << "[INFO] miterVerilog = " << miterVerilog.string() << std::endl;
   run_pass("write_verilog " + miterVerilog.string(), design);
 
   auto miterBlif = config.getSynthResultDir() / "design_invariants.blif";
+  std::cout << "[INFO] miterBlif = " << miterBlif.string() << std::endl;
   run_pass("techmap; write_blif " + miterBlif.string(), design);
 
   auto optimizedBlif =
@@ -150,7 +153,7 @@ void flowScorrInvar(const SynthesisFlowConfig &config, RTLIL::Module *m,
   // for (auto cell : )
   auto *propertyPin = cloned->wire(RTLIL::escape_id("property_pin"));
   assert(propertyPin->port_id == maxPortId);
-
+  std::cout << "[INFO] optimizedBlif = " << optimizedBlif.string() << std::endl;
   runAbcScorrOptimization(miterBlif, optimizedBlif, /* inductionDepth */ 10,
                           /* withInvariants */ true, numPOBits);
 }
@@ -220,15 +223,26 @@ std::vector<Invariant> inferLinearInvariantsFromSimulation(
     RTLIL::Module *m, SynthesisFlowConfig &config, Eigen::MatrixXi signalMatrix,
     const std::vector<RTLIL::IdString> &signalList,
     const std::filesystem::path &flattenedVerilog, const std::string &topName) {
+  std::cerr << "[INFO] signal matrix content before update:\n";
+  std::cerr << signalMatrix << "\n";
   // [STEP]: Suggest invariants from the signalMatrix:
   std::vector<Invariant> linearInvariants =
       inferLinearEqualities(m, signalMatrix, signalList);
-
+  std::cerr << "[INFO] Suggested invariants:\n";
+  for (const auto &inv : linearInvariants) {
+    std::cerr << "[INFO] invariant: " << inv.toString() << "\n";
+  }
   std::vector<Invariant> linearInequalities =
       inferLinearInequalitiesViaConflictGraph(m, signalMatrix, signalList);
 
   std::copy(linearInequalities.begin(), linearInequalities.end(),
             std::back_inserter(linearInvariants));
+  
+  // print the suggested invariants
+  std::cerr << "[INFO] Suggested invariants:\n";
+  for (const auto &inv : linearInvariants) {
+    std::cerr << "[INFO] invariant: " << inv.toString() << "\n";
+  }
 
   // [STEP]: Guarantee the correctness of the generated invariants
   ModelCheckingResult modelCheckingResult =
@@ -252,11 +266,21 @@ std::vector<Invariant> inferLinearInvariantsFromSimulation(
     std::stringstream simCmd;
     simCmd << (verilatorObjDir / ("V" + topName));
     shell(simCmd.str());
-
+    // std::cerr << "[INFO] signal matrix content before update:\n";
+    // std::cerr << signalMatrix << "\n";
     // Retrieve the signal matrix from CEX
+    std::cerr << "[INFO] Parsing CEX file vcd: " << vcdFile << "\n";
     auto cexMatrix = vcdToSignalMatrix(m, vcdFile, signalList);
+    // print cex matrix
+    std::cerr << "[INFO] CEX matrix:\n";
+    std::cerr << cexMatrix << "\n";
+    std::cerr << "[INFO] CEX matrix size: " << cexMatrix.rows() << "x"
+              << cexMatrix.cols() << "\n";
+    std::cerr << "[INFO] signal matrix size before update: " << signalMatrix.rows()
+              << "x" << signalMatrix.cols() << "\n";
     signalMatrix = getUniqueRows({signalMatrix, cexMatrix});
-
+    std::cerr << "[INFO] Updated signal matrix size: " << signalMatrix.rows()
+              << "x" << signalMatrix.cols() << "\n";
     // [STEP]: Suggest invariants from the signalMatrix:
     linearInvariants = inferLinearEqualities(m, signalMatrix, signalList);
     linearInequalities =
@@ -264,10 +288,17 @@ std::vector<Invariant> inferLinearInvariantsFromSimulation(
     std::copy(linearInequalities.begin(), linearInequalities.end(),
               std::back_inserter(linearInvariants));
 
+    std::cerr << "[INFO] Suggested invariants:\n";
+    for (const auto &inv : linearInvariants) {
+      std::cerr << "[INFO] invariant: " << inv.toString() << "\n";
+    }
+
     modelCheckingResult = verifyInvariant(config, m, linearInvariants);
 
     config.newProofIteration();
+    std::cerr << "[INFO] iteration " << config.getProofIteration() << std::endl;
   }
+  std::cerr << "[INFO] Exiting the CEGAR loop" << std::endl;;
   assert(modelCheckingResult.status == ModelCheckingResult::SAFE);
 
   return linearInvariants;
@@ -295,7 +326,10 @@ bool synthesisFlow(SynthesisFlowConfig config, RTLIL::Design *design,
 
   auto flattenedVerilog = config.getOutputDir() / VERILOG_FLATTENED;
   run_pass("write_verilog " + flattenedVerilog.string(), design);
-
+  std::cerr << "[INFO] singleBitRegOuts" << std::endl;
+  for (const auto &sig : singleBitRegOuts) {
+    std::cerr << "[INFO] " << sig.str() << std::endl;
+  }
   auto signalMatrix = runRandomSimulation(m, topName, config, flattenedVerilog,
                                           singleBitRegOuts);
 
